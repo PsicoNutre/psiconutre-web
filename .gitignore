@@ -1,0 +1,15 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Vercel
+.vercel
+
+# Variables de entorno (el sitio es estatico y no deberia necesitarlas)
+.env
+.env.*

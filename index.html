@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="es-CO">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- El titulo lidera con lo que la gente busca ("psicologia Bogota"),
+         no con el eslogan: "Nutre tu mente, transforma tu vida" no lo
+         busca nadie. La marca va al final, que es donde Google la corta
+         menos. -->
+    <title>Psicología y nutrición en Bogotá | PsicoNutre</title>
+    <meta name="description" content="Consulta de psicología en Bogotá y online: adultos, niños y adolescentes, con acompañamiento nutricional. Primera sesión sin costo.">
+
+    <!-- AL MIGRAR AL DOMINIO REAL: descomentar el canonical y pasar
+         og:image y twitter:image a URL absoluta. Las redes sociales NO
+         resuelven rutas relativas: hoy la tarjeta compartida sale sin
+         imagen. No se pone la URL de Vercel para no declararla canonica. -->
+    <!-- <link rel="canonical" href="https://DOMINIO/"> -->
+
+    <meta property="og:site_name" content="PsicoNutre">
+    <meta property="og:title" content="Psicología y nutrición en Bogotá | PsicoNutre">
+    <meta property="og:description" content="Consulta de psicología en Bogotá y online: adultos, niños y adolescentes, con acompañamiento nutricional. Primera sesión sin costo.">
+    <meta property="og:image" content="assets/images/hero/pn_hero.jpg">
+    <meta property="og:image:alt" content="Dos personas conversando durante una sesión de psicología en PsicoNutre">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Psicología y nutrición en Bogotá | PsicoNutre">
+    <meta name="twitter:description" content="Consulta de psicología en Bogotá y online: adultos, niños y adolescentes, con acompañamiento nutricional. Primera sesión sin costo.">
+    <meta name="twitter:image" content="assets/images/hero/pn_hero.jpg">
+    <!-- Datos estructurados. Esto es lo que Google usa para el panel
+         lateral y para las busquedas locales del tipo "psicologo cerca
+         de mi". No se declara "geo": el mapa embebido resuelve por
+         direccion y no tenemos las coordenadas reales; inventarlas
+         mandaria gente a la puerta equivocada.
+         AL MIGRAR: agregar "url" y pasar logo/image a URL absoluta. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "PsicoNutre",
+      "slogan": "Nutre tu mente, transforma tu vida",
+      "description": "Consultorio de psicología con acompañamiento nutricional en Bogotá. Atención a adultos, niños y adolescentes, presencial y online.",
+      "telephone": "+573223689894",
+      "email": "psiconutre@hotmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrera 25 #37-78",
+        "addressLocality": "Teusaquillo, Bogotá",
+        "addressRegion": "Bogotá D.C.",
+        "addressCountry": "CO"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Bogotá"
+        },
+        {
+          "@type": "Country",
+          "name": "Colombia"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/psico__nutre/",
+        "https://www.facebook.com/share/1DFCax5L9F/?mibextid=wwXIfr"
+      ],
+      "logo": "assets/images/site_logo/logo_psiconutre.png",
+      "image": "assets/images/hero/pn_hero.jpg",
+      "availableLanguage": {
+        "@type": "Language",
+        "name": "Español"
+      },
+      "availableService": [
+        {
+          "@type": "MedicalTherapy",
+          "name": "Evaluación psicodiagnóstica"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Terapia individual"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Terapia de pareja"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Terapia familiar"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Terapia de orientación parental"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Sexología"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Psicología infanto-juvenil"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Orientación vocacional"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Manejo de adicciones"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Plan de alimentación personalizado"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Asesoría nutricional"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Intervención clínica en trastornos de la conducta alimentaria"
+        }
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "David Andrés Nieto Martínez",
+        "jobTitle": "Psicólogo",
+        "worksFor": {
+          "@type": "MedicalBusiness",
+          "name": "PsicoNutre"
+        }
+      },
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "David Andrés Nieto Martínez",
+          "jobTitle": "Psicología adultos"
+        },
+        {
+          "@type": "Person",
+          "name": "Jessica Natalia Muñoz Orjuela",
+          "jobTitle": "Psicología infanto-juvenil"
+        },
+        {
+          "@type": "Person",
+          "name": "Michael Andrés Novoa López",
+          "jobTitle": "Psicología educativa y manejo de adicciones"
+        },
+        {
+          "@type": "Person",
+          "name": "Angelo David Romero Cardona",
+          "jobTitle": "Psicología de apoyo integral e inclusión"
+        },
+        {
+          "@type": "Person",
+          "name": "Johann Manuel Lara Ruiz",
+          "jobTitle": "Nutricionista Dietista"
+        }
+      ]
+    }
+    </script>
+    <!-- Iconos. Los chicos usan un recorte cerrado sobre el simbolo: a 16px
+         la palabra "PSICONUTRE+" mide 2px de alto y no se lee. El de iOS si
+         lleva el lockup completo, porque se muestra bastante mas grande. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/site_logo/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/site_logo/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/site_logo/apple-touch-icon.png">
+
+    <!-- Fraimwork - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <!-- Icon Font - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome.min.css">
+
+    <!-- Animation - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
+
+    <!-- Cursor - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/cursor.min.css">
+
+    <!-- Carousel - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.min.css">
+
+    <!-- Video & Image Popup - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.min.css">
+
+    <!-- Counter - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/odometer.min.css">
+
+    <!-- Custom - CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- PsicoNutre - tipografias de titulares -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,400..700,0..100,0..1&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..600&display=swap">
+
+    <!-- PsicoNutre - capa propia (va SIEMPRE despues de style.css) -->
+    <link rel="stylesheet" type="text/css" href="assets/css/psiconutre.css">
+
+    <!-- Prepara la aparicion al hacer scroll. Va aca, en el <head>, y no al
+         final del body, para que los elementos nazcan ocultos y no haya un
+         parpadeo. Si el navegador no soporta IntersectionObserver, o si la
+         persona pidio menos movimiento, no se agrega nada y todo queda visible.
+         El setTimeout es la red de seguridad: si psiconutre.js no llega a
+         arrancar, se muestra todo igual. El contenido nunca depende del JS. -->
+    <script>
+      (function () {
+        if (!("IntersectionObserver" in window)) return;
+        if (window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var h = document.documentElement;
+        h.classList.add("pn-anim");
+        setTimeout(function () {
+          if (!window.__pnAnimReady) h.classList.remove("pn-anim");
+        }, 2500);
+      })();
+    </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- Body Wrap - Start -->
+    <div class="page_wrapper">
+
+      <!-- Back To Top - Start -->
+      <div class="backtotop">
+        <a href="#" class="scroll">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+      <!-- Back To Top - End -->
+
+      <!-- WhatsApp Flotante - Start
+           Estilos en linea a proposito: no se toca style.css -->
+      <a class="pn_whatsapp_float" href="https://wa.me/573223689894" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <!-- WhatsApp Flotante - End -->
+
+      <!-- Site Header - Start
+      ================================================== -->
+      <header class="site_header">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-2 col-5">
+              <div class="site_logo">
+                <a class="site_link" href="index.html">
+                  <img width="400" height="400" src="assets/images/site_logo/logo_psiconutre.png" alt="PsicoNutre">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-7 col-2">
+              <nav class="main_menu navbar navbar-expand-lg">
+                <div class="main_menu_inner collapse navbar-collapse justify-content-center" id="main_menu_dropdown">
+                  <ul class="main_menu_list unordered_list">
+                    <li class="active"><a class="nav-link" href="#hero">Inicio</a></li>
+                    <li><a class="nav-link" href="#dolores">¿Por qué consultar?</a></li>
+                    <li><a class="nav-link" href="#proceso">¿Cómo trabajamos?</a></li>
+                    <li><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li><a class="nav-link" href="#equipo">Equipo</a></li>
+                    <li><a class="nav-link" href="#agenda">Primera sesión</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+            <div class="col-lg-3 col-5">
+              <ul class="header_btns_group unordered_list justify-content-end">
+                <li>
+                  <button class="mobile_menu_btn" type="button" data-bs-toggle="collapse" data-bs-target="#main_menu_dropdown" aria-expanded="false" aria-label="Abrir menu">
+                    <i class="far fa-bars"></i>
+                  </button>
+                </li>
+                <li>
+                  <a class="btn_hotline" href="https://wa.me/573223689894" target="_blank" rel="noopener">
+                    <span class="btn_icon">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </span>
+                    <span class="btn_text" data-text="+57 322 368 9894">+57 322 368 9894</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Site Header - End
+      ================================================== -->
+
+      <!-- Main Body - Start
+      ================================================== -->
+      <main class="page_content">
+
+        <!-- Hero Section - Start
+        ================================================== -->
+        <section id="hero" class="hero_section decoration_wrapper pn_grad_blue_soft pn_full">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <div class="hero_content_wrap">
+                  <span class="pn_rotulo">PSICOLOGÍA Y NUTRICIÓN · ATENCIÓN ONLINE Y PRESENCIAL EN BOGOTÁ</span>
+                  <h1 class="heading_text">
+                    Nutre tu mente, <mark>transforma</mark> tu vida
+                  </h1>
+                  <p class="heading_description">
+                    Un espacio seguro para gestionar tus emociones, mejorar tu alimentación y recuperar tu tranquilidad. Creado para personas que buscan sentirse mejor, aprendiendo a gestionar sus emociones y pensamientos, así como padres que desean un acompañamiento empático para sus hijos.
+                  </p>
+                  <ul class="btns_group unordered_list">
+                    <li>
+                      <a class="btn btn-primary" href="#agenda">
+                        <span class="btn_text" data-text="Agendar primera sesión gratuita">
+                          Agendar primera sesión gratuita
+                        </span>
+                        <span class="btn_icon">
+                          <i class="fa-solid fa-arrow-up-right"></i>
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="btn btn-secondary" href="#proceso">
+                        <span class="btn_text" data-text="Conoce cómo trabajamos">
+                          Conoce cómo trabajamos
+                        </span>
+                        <span class="btn_icon">
+                          <i class="fa-solid fa-arrow-up-right"></i>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  <!-- Mensaje de confianza. Reemplaza al contador de la plantilla:
+                       no hay cifras reales del cliente y no se inventan. -->
+                  <ul class="hero_section_counter unordered_list">
+                    <li>
+                      <div class="counter_item">
+                        <div class="counter_value mb-0">
+                          <i class="fa-light fa-user-check"></i>
+                        </div>
+                        <hr>
+                        <p class="counter_description mb-0">
+                          Proceso personalizado e integral
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="counter_item">
+                        <div class="counter_value mb-0">
+                          <i class="fa-light fa-circle-check"></i>
+                        </div>
+                        <hr>
+                        <p class="counter_description mb-0">
+                          Sin costo inicial
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="counter_item">
+                        <div class="counter_value mb-0">
+                          <i class="fa-light fa-lock"></i>
+                        </div>
+                        <hr>
+                        <p class="counter_description mb-0">
+                          100% confidencial
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="hero_image_wrap">
+                  <img width="1121" height="1403" fetchpriority="high" decoding="async" src="assets/images/hero/pn_hero.jpg" alt="Dos personas conversando durante una sesión de psicología, con el logo de PsicoNutre al fondo">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="decoration_item shape_blur_shadow"></div>
+          <div class="decoration_item shape_leaf">
+            <img src="assets/images/shapes/shape_leaf_left_top.svg" alt="">
+          </div>
+        </section>
+        <!-- Hero Section - End
+        ================================================== -->
+
+        <!-- Dolores Section - Start (era About Section)
+        ================================================== -->
+        <section id="dolores" class="about_section section_space_lg pn_full pn_clip">
+          <div class="pn_leaf pn_leaf_dolores"><img decoding="async" loading="lazy" src="assets/images/shapes/shape_leaf_left.svg" alt=""></div>
+          <div class="container">
+            <div class="row align-items-center justify-content-lg-between">
+              <div class="col-lg-6 order-lg-last">
+                <div class="image_widget">
+                  <img width="1400" height="1555" decoding="async" loading="lazy" src="assets/images/about/pn_dolores.jpg" alt="Mujer sentada junto a una ventana con una taza entre las manos, en un momento de calma">
+                  <div class="image_shape bg_primary_light"></div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="about_content">
+                  <div class="section_heading mb-4">
+                    <span class="pn_rotulo">¿POR QUÉ CONSULTAR?</span>
+                    <h2 class="section_heading_text">
+                      ¿Sientes que tus emociones te <mark>desbordan</mark> y no sabes por dónde empezar?
+                    </h2>
+                    <p class="section_heading_description mb-0">
+                      Muchas veces la autocrítica, la soledad o la dificultad para poner límites nos hacen decir "no me siento bien". Si has sentido falta de conexión con otros profesionales, aquí te ofrecemos un proceso terapéutico personalizado, adaptado 100% a tu estilo de aprendizaje y necesidades.
+                    </p>
+                  </div>
+                  <div class="btn_wrap pb-0">
+                    <a class="btn btn-primary" href="#agenda">
+                      <span class="btn_text" data-text="Quiero tener mi primera sesión gratuita">
+                        Quiero tener mi primera sesión gratuita
+                      </span>
+                      <span class="btn_icon">
+                        <i class="fa-solid fa-arrow-up-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Dolores Section - End
+        ================================================== -->
+
+        <!-- Diferencial / Proceso Section - Start (bloque Work Process, rescatado de about.html)
+        ================================================== -->
+        <section id="proceso" class="work_process_section section_space_lg pn_grad_green pn_full">
+          <div class="container">
+
+            <div class="section_heading text-center">
+              <span class="pn_rotulo">¿CÓMO TRABAJAMOS?</span>
+              <h2 class="section_heading_text">
+                Nuestro mayor valor: <mark>integramos</mark> tu salud emocional y física
+              </h2>
+              <p class="section_heading_description mx-auto">
+                Sabemos que la mente y el cuerpo están conectados. La ansiedad puede alterar tu apetito y los cambios de hábitos pueden generar frustración. Por eso, te brindamos la opción de complementar tu psicoterapia con asesoría nutricional, ayudándote a lograr una adherencia real a tus tratamientos sin presiones.
+              </p>
+            </div>
+
+            <div class="row align-items-center">
+              <div class="col-lg-6 order-lg-last pn_gal_col">
+                <div class="images_group_widget">
+                  <ul class="unordered_list">
+                    <li>
+                      <img width="800" height="1000" decoding="async" loading="lazy" src="assets/images/about/pn_proceso_1.jpg" alt="Mujer sentada junto a una ventana, pensativa, con la mano en el mentón">
+                      <img width="800" height="853" decoding="async" loading="lazy" src="assets/images/about/pn_proceso_2.jpg" alt="Personas compartiendo una comida alrededor de una mesa">
+                    </li>
+                    <li>
+                      <img width="800" height="800" decoding="async" loading="lazy" src="assets/images/about/pn_proceso_3.jpg" alt="Dos personas conversando en un espacio luminoso junto a un ventanal">
+                      <img width="800" height="960" decoding="async" loading="lazy" src="assets/images/about/pn_proceso_4.jpg" alt="Escritorio con una computadora, un cuaderno y una taza de café junto a plantas">
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-lg-6 pn_tl_col">
+                <!-- Linea de tiempo de los 4 pasos. La redaccion es de Joik y
+                     refleja el flujo real (Calendly primera consulta -> Fresha
+                     pacientes asignados). PENDIENTE DE APROBACION DE DAVID. -->
+                <div class="pn_tl">
+
+                  <p class="pn_tl_meta">
+                    Paso <span class="pn_tl_actual">01</span> de 04
+                  </p>
+
+                  <!-- Las tarjetas. El viewport lleva una mascara que difumina
+                       los bordes, para que la mirada caiga en la del centro. -->
+                  <div class="pn_tl_viewport">
+                    <ol class="pn_tl_track">
+                      <li class="pn_tl_step is-active" data-i="0">
+                        <article class="pn_tl_card">
+                          <header class="pn_tl_head">
+                            <span class="pn_tl_icon"><i class="fa-light fa-calendar-days"></i></span>
+                            <span class="pn_tl_num">01</span>
+                          </header>
+                          <h3 class="pn_tl_title">Agendas tu primera sesión</h3>
+                          <p class="pn_tl_text">Eliges día y hora en el calendario. Es online, dura una hora y no tiene costo.</p>
+                        </article>
+                      </li>
+                      <li class="pn_tl_step" data-i="1">
+                        <article class="pn_tl_card">
+                          <header class="pn_tl_head">
+                            <span class="pn_tl_icon"><i class="fa-light fa-comments"></i></span>
+                            <span class="pn_tl_num">02</span>
+                          </header>
+                          <h3 class="pn_tl_title">Nos conocemos</h3>
+                          <p class="pn_tl_text">Nos cuentas qué te está pasando. Te explicamos cómo trabajamos, tiempos y planes, sin compromiso.</p>
+                        </article>
+                      </li>
+                      <li class="pn_tl_step" data-i="2">
+                        <article class="pn_tl_card">
+                          <header class="pn_tl_head">
+                            <span class="pn_tl_icon"><i class="fa-light fa-user-check"></i></span>
+                            <span class="pn_tl_num">03</span>
+                          </header>
+                          <h3 class="pn_tl_title">Te asignamos profesional</h3>
+                          <p class="pn_tl_text">Según lo que necesites, te derivamos al especialista del equipo que mejor se ajuste a tu caso.</p>
+                        </article>
+                      </li>
+                      <li class="pn_tl_step" data-i="3">
+                        <article class="pn_tl_card">
+                          <header class="pn_tl_head">
+                            <span class="pn_tl_icon"><i class="fa-light fa-seedling"></i></span>
+                            <span class="pn_tl_num">04</span>
+                          </header>
+                          <h3 class="pn_tl_title">Empiezas tu proceso</h3>
+                          <p class="pn_tl_text">Continúas con tu profesional asignado y agendas tus siguientes sesiones desde tu propia agenda.</p>
+                        </article>
+                      </li>
+                    </ol>
+                  </div>
+
+                  <!-- Barra de progreso navegable: se arrastra o se hace clic
+                       en cualquier punto. Los cuatro puntos son los pasos. -->
+                  <div class="pn_tl_bar">
+                    <div class="pn_tl_rail" role="slider" tabindex="0"
+                         aria-label="Navegar los pasos" aria-valuemin="1"
+                         aria-valuemax="4" aria-valuenow="1">
+                      <span class="pn_tl_fill"></span>
+                      <button class="pn_tl_tick is-active" type="button" data-i="0" aria-label="Paso 1: Agendas tu primera sesión"></button>
+                      <button class="pn_tl_tick" type="button" data-i="1" aria-label="Paso 2: Nos conocemos"></button>
+                      <button class="pn_tl_tick" type="button" data-i="2" aria-label="Paso 3: Te asignamos profesional"></button>
+                      <button class="pn_tl_tick" type="button" data-i="3" aria-label="Paso 4: Empiezas tu proceso"></button>
+                    </div>
+                  </div>
+                  <p class="pn_tl_hint">
+                    <span class="pn_tl_hint_arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span>Explora los pasos hacia la derecha: haz clic en un punto o arrastra la barra.</span>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Diferencial / Proceso Section - End
+        ================================================== -->
+
+        <!-- Service Section - Start
+        ================================================== -->
+        <section id="servicios" class="service_section section_space_lg pn_grad_blue pn_full pn_clip">
+          <div class="pn_leaf pn_leaf_servicios"><img decoding="async" loading="lazy" src="assets/images/shapes/shape_leaf_right.svg" alt=""></div>
+          <div class="container">
+            <div class="section_heading text-center">
+              <span class="pn_rotulo">Nuestros servicios</span>
+              <h2 class="section_heading_text">Especialistas enfocados en lo que <mark>realmente</mark> necesitas</h2>
+              <p class="section_heading_description mb-0">
+                Queremos que des el primer paso con la menor fricción posible. Selecciona el área en la que tú o tu familia buscan apoyo.
+              </p>
+            </div>
+
+            <!-- Descripciones redactadas por Joik como propuesta.
+                 PENDIENTE DE APROBACION DE DAVID: son descripciones de servicios
+                 clinicos y las tiene que validar un profesional habilitado.
+                 [PENDIENTE ICONOS] Se reutilizan los iconos de la plantilla. -->
+            <div class="row justify-content-center">
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-clipboard-check"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Evaluación psicodiagnóstica</h3>
+                    <p>Una valoración con instrumentos clínicos para entender qué está pasando y orientar el tratamiento que corresponde.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-couch"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Terapia individual</h3>
+                    <p>Un espacio uno a uno para trabajar lo que te preocupa, a tu ritmo y adaptado a tu forma de aprender.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-people-arrows"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Terapia de pareja</h3>
+                    <p>Acompañamiento para mejorar la comunicación, atravesar los conflictos y reconstruir el vínculo.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-people-roof"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Terapia familiar</h3>
+                    <p>Trabajo con el grupo familiar para destrabar las dinámicas que generan malestar y encontrar acuerdos.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-hands-holding-child"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Terapia de orientación parental</h3>
+                    <p>Herramientas concretas para acompañar a tus hijos con límites claros, sin desgastarte en el intento.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-heart"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Sexología</h3>
+                    <p>Un espacio confidencial y sin juicios para hablar de sexualidad, vínculos y bienestar íntimo.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-child-reaching"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Psicología infanto-juvenil</h3>
+                    <p>Acompañamiento a niños y adolescentes, con un lenguaje y un ritmo pensados para su edad.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-compass"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Orientación vocacional</h3>
+                    <p>Un proceso para ordenar intereses, aptitudes, dudas y decidir qué estudiar o hacia dónde seguir con más claridad.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-shield-heart"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Manejo de adicciones</h3>
+                    <p>Acompañamiento para revisar la relación con el consumo y construir cambios que se puedan sostener en el tiempo.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="btn_wrap pb-0 text-center">
+              <a class="btn btn-primary" href="#agenda">
+                <span class="btn_text" data-text="Agendar sesión de evaluación gratuita">
+                  Agendar sesión de evaluación gratuita
+                </span>
+                <span class="btn_icon">
+                  <i class="fa-solid fa-arrow-up-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+        <!-- Service Section - End
+        ================================================== -->
+
+        <!-- Nutricion Section - Start
+             Seccion propia, pedida por el cliente el 2026-09-28. Antes
+             "Nutricion integral" era una tarjeta mas entre los servicios de
+             psicologia; ahora nutricion tiene su propio espacio.
+
+             Va en VERDE y psicologia en CELESTE: es la distincion que pidio
+             David. Por eso reusa .pn_grad_green, el mismo fondo que Proceso.
+
+             Las descripciones son propuesta de Joik.
+             PENDIENTE DE APROBACION DE DAVID: son descripciones de servicios
+             clinicos y las tiene que validar un profesional habilitado.
+        ================================================== -->
+        <section id="nutricion" class="service_section section_space_lg pn_grad_green pn_full pn_clip">
+          <div class="pn_leaf pn_leaf_nutricion"><img decoding="async" loading="lazy" src="assets/images/shapes/shape_leaf_left.svg" alt=""></div>
+          <div class="container">
+            <div class="section_heading text-center">
+              <span class="pn_rotulo">Nutrición</span>
+              <h2 class="section_heading_text">Nutrición que <mark>acompaña</mark> tu proceso</h2>
+              <p class="section_heading_description mb-0">
+                El cuerpo y las emociones van juntos. Por eso la parte nutricional se trabaja en coordinación con tu proceso psicológico, y no como algo aparte.
+              </p>
+            </div>
+
+            <div class="row justify-content-center">
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-clipboard-list"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Plan de alimentación personalizado</h3>
+                    <p>Una pauta armada a tu medida, según tus gustos, tu rutina y tus objetivos, y sin dietas restrictivas.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-apple-whole"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Asesoría nutricional</h3>
+                    <p>Orientación para ordenar tu alimentación y sostener los cambios en el tiempo, junto a tu proceso terapéutico.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service_item">
+                  <div class="item_icon">
+                    <i class="fa-light fa-hand-holding-heart"></i>
+                  </div>
+                  <div class="item_contact">
+                    <h3 class="item_title">Intervención clínica en trastornos de la conducta alimentaria</h3>
+                    <p>Acompañamiento especializado en la relación con la comida y el cuerpo, con nutrición y psicología trabajando en conjunto.</p>
+                    <a class="btn-link" href="#agenda">
+                      <span class="btn_text">Agendar</span>
+                      <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="btn_wrap pb-0 text-center">
+              <a class="btn btn-secondary" href="#agenda">
+                <span class="btn_text" data-text="Agendar mi primera sesión">
+                  Agendar mi primera sesión
+                </span>
+                <span class="btn_icon">
+                  <i class="fa-solid fa-arrow-up-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+        <!-- Nutricion Section - End
+        ================================================== -->
+
+        <!-- Team Section - Start (rescatado de team.html)
+        ================================================== -->
+        <section id="equipo" class="team_section section_space_lg pn_full pn_clip">
+          <div class="pn_leaf pn_leaf_equipo"><img decoding="async" loading="lazy" src="assets/images/shapes/shape_leaf_right_top.svg" alt=""></div>
+          <div class="container">
+            <div class="row justify-content-lg-between align-items-lg-end">
+              <div class="col-lg-7">
+                <div class="section_heading mb-lg-4 mb-2">
+                  <span class="pn_rotulo">El equipo</span>
+                  <h2 class="section_heading_text">Profesionales <mark>humanos</mark>, dispuestos a escucharte de verdad</h2>
+                  <p class="section_heading_description mb-0">
+                    Nuestro compromiso es brindarte cercanía y confianza. Conoce a nuestro equipo.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="btn_wrap pb-0 text-lg-end">
+                  <a class="btn btn-primary" href="#agenda">
+                    <span class="btn_text" data-text="Hablar con un especialista">
+                      Hablar con un especialista
+                    </span>
+                    <span class="btn_icon">
+                      <i class="fa-solid fa-arrow-up-right"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Equipo confirmado por David el 2026-09-12 en el Google Doc.
+                 Son TRES: la psiquiatra no continua y el nutricionista tampoco.
+                 Nombres, roles y bios son literales del documento. -->
+            <div class="row justify-content-center">
+
+              <div class="col-lg-3 col-md-6">
+                <div class="team_item">
+                  <div class="team_memder_image">
+                    <img width="600" height="750" decoding="async" loading="lazy" src="assets/images/team/david_nieto.jpg" alt="David Andrés Nieto Martínez, psicología para adultos">
+                  </div>
+                  <div class="team_memder_info text-center">
+                    <h4 class="team_memder_designation">Psicología adultos</h4>
+                    <h3 class="team_memder_name">David Andrés Nieto Martínez</h3>
+                    <p class="mb-3 pn_clamp">
+                      Profesional en psicología con formación avanzada en modelos cognitivo-conductuales y de tercera generación. Cuenta con sólida experiencia en la atención individual y grupal de casos de alta complejidad, incluyendo intervención en trauma, conducta suicida, gestión e intervención en crisis, manejo del duelo, así como terapia de pareja, sexología, evaluación psicodiagnóstica, gestión emocional y psicoeducación.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="team_item">
+                  <div class="team_memder_image">
+                    <img width="600" height="750" decoding="async" loading="lazy" src="assets/images/team/jessica_munoz.jpg" alt="Jessica Natalia Muñoz Orjuela, psicología infanto-juvenil">
+                  </div>
+                  <div class="team_memder_info text-center">
+                    <h4 class="team_memder_designation">Psicología infanto-juvenil</h4>
+                    <h3 class="team_memder_name">Jessica Natalia Muñoz Orjuela</h3>
+                    <p class="mb-3 pn_clamp">
+                      Psicóloga de infancia y adolescencia, enfocada en el abordaje de trastornos del neurodesarrollo y de diversas dificultades comportamentales, emocionales o de aprendizaje en población infantil o sin diagnóstico clínico, esto desde un enfoque cognitivo-conductual que promueve la regulación emocional, el desarrollo de funciones ejecutivas, las habilidades sociales y la orientación a padres en pautas de crianza.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="team_item">
+                  <div class="team_memder_image">
+                    <img width="600" height="750" decoding="async" loading="lazy" src="assets/images/team/michael_novoa.jpg" alt="Michael Andrés Novoa López, psicología educativa y manejo de adicciones">
+                  </div>
+                  <div class="team_memder_info text-center">
+                    <h4 class="team_memder_designation">Psicología educativa y manejo de adicciones</h4>
+                    <h3 class="team_memder_name">Michael Andrés Novoa López</h3>
+                    <p class="mb-3 pn_clamp">
+                      Psicólogo con experiencia en el acompañamiento integral de jóvenes y estudiantes, enfocado en el bienestar emocional, la toma de decisiones, las relaciones interpersonales, la orientación vocacional y el abordaje de adicciones, principalmente en consumo de sustancias psicoactivas, caracterizado por una práctica fundamentada en la escucha activa, la comunicación asertiva y el soporte individualizado.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="team_item">
+                  <div class="team_memder_image">
+                    <img width="600" height="750" decoding="async" loading="lazy" src="assets/images/team/angelo_romero.jpg" alt="Angelo David Romero Cardona, psicología de apoyo integral e inclusión">
+                  </div>
+                  <div class="team_memder_info text-center">
+                    <h4 class="team_memder_designation">Psicología de apoyo integral e inclusión</h4>
+                    <h3 class="team_memder_name">Angelo David Romero Cardona</h3>
+                    <p class="mb-3 pn_clamp">
+                      Psicólogo con enfoque cognitivo-conductual y experiencia en evaluación, intervención, seguimiento, atención en crisis, primeros auxilios psicológicos, regulación emocional y abordaje de dificultades emocionales y conductuales. Experiencia en la atención de población infantil, adulta y adulta mayor, incluyendo personas con discapacidad, esto mediante estrategias de intervención como habilidades de afrontamiento, modificación de conductas y desarrollo de recursos personales.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Nutricion. Lleva el acento verde, no el celeste: es la
+                   misma distincion que pidio David para la seccion de
+                   servicios y que aca se repite en su nombre y su rol. -->
+              <div class="col-lg-3 col-md-6">
+                <div class="team_item pn_team_nutri">
+                  <div class="team_memder_image">
+                    <img width="600" height="750" decoding="async" loading="lazy" src="assets/images/team/johann_lara.jpg" alt="Johann Manuel Lara Ruiz, nutrición">
+                  </div>
+                  <div class="team_memder_info text-center">
+                    <h4 class="team_memder_designation">Nutrición</h4>
+                    <h3 class="team_memder_name">Johann Manuel Lara Ruiz</h3>
+                    <p class="mb-3 pn_clamp">
+                      Nutricionista Dietista enfocado en acompañamiento para la construcción de hábitos saludables, el diseño de planes de alimentación personalizados y el fortalecimiento de una relación saludable con la alimentación, incluyendo orientación nutricional en el abordaje interdisciplinario de los trastornos de la conducta alimentaria.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+        <!-- Team Section - End
+        ================================================== -->
+
+        <!-- Ubicacion Section - Start
+        ================================================== -->
+        <section id="ubicacion" class="pn_location_section" aria-labelledby="pn_ubicacion_titulo">
+          <div class="container">
+            <div class="pn_location_card">
+              <div class="row g-0 align-items-stretch">
+                <div class="col-lg-5">
+                  <div class="pn_location_content section_heading">
+                    <span class="pn_rotulo">ATENCIÓN ONLINE Y PRESENCIAL</span>
+                    <h2 id="pn_ubicacion_titulo" class="section_heading_text">
+                      Consultorio en <mark>Teusaquillo, Bogotá</mark>
+                    </h2>
+                    <p class="pn_location_text">
+                      La atención presencial en este consultorio está disponible actualmente para las consultas con David. También atendemos online para acompañarte estés donde estés.
+                    </p>
+                    <address class="pn_location_address">
+                      <i class="fa-light fa-location-dot" aria-hidden="true"></i>
+                      <span>Carrera 25 #37-78, Teusaquillo, Bogotá, Colombia</span>
+                    </address>
+                    <div class="btn_wrap pb-0">
+                      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera+25+%2337-78%2C+Teusaquillo%2C+Bogot%C3%A1%2C+Colombia" target="_blank" rel="noopener">
+                        <span class="btn_text" data-text="Abrir en Google Maps">Abrir en Google Maps</span>
+                        <span class="btn_icon">
+                          <i class="fa-solid fa-arrow-up-right"></i>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-7">
+                  <div class="pn_location_map">
+                    <iframe
+                      title="Mapa del consultorio de PsicoNutre en Teusaquillo, Bogotá"
+                      src="https://www.google.com/maps?q=Carrera+25+%2337-78%2C+Teusaquillo%2C+Bogot%C3%A1%2C+Colombia&amp;output=embed"
+                      loading="lazy"
+                      allowfullscreen
+                      referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fotos reales del consultorio. David consiguio autorizacion del
+                   lugar el 2026-09-12 y envio estas dos tomas el 2026-09-14. -->
+              <div class="row g-0 pn_location_gallery">
+                <div class="col-md-6">
+                  <img width="1100" height="733" decoding="async" loading="lazy" src="assets/images/consultorio/consultorio_1.jpg"
+                       loading="lazy"
+                       alt="Consultorio de PsicoNutre: sala con sofá, escritorio y sillas para la consulta">
+                </div>
+                <div class="col-md-6">
+                  <img width="800" height="1000" decoding="async" loading="lazy" src="assets/images/consultorio/consultorio_2.jpg"
+                       loading="lazy"
+                       alt="Sala de reuniones del consultorio, con mesa amplia y espacio para trabajo grupal">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Ubicacion Section - End
+        ================================================== -->
+
+        <!-- Primera sesion / Agenda Section - Start (era Consultation Section)
+        ================================================== -->
+        <section id="agenda" class="consultation_section pn_full pn_grad_blue pn_clip">
+          <div class="container">
+            <div class="consultation_form decoration_wrapper">
+              <div class="section_heading text-center">
+                <span class="pn_rotulo">Primera sesión</span>
+                <h2 class="section_heading_text">
+                  ¿Qué encontrarás en tu <span class="d-md-block"><mark>primera sesión gratuita?</mark></span>
+                </h2>
+                <p class="section_heading_description mb-0">
+                  No encontrarás una simple "escucha vacía contra un muro". Tendrás un espacio para conectar, expresar tus preocupaciones, conocer nuestra metodología de trabajo (tiempos, precios y planes) y recibir alternativas claras para tu bienestar. Esta primera sesión se realiza siempre online.
+                </p>
+              </div>
+              <!-- El formulario de la plantilla se saco: el agendamiento va por
+                   Calendly. Cuando exista la cuenta de PsicoNutre, este bloque se
+                   reemplaza por el widget embebido o el href del boton apunta al
+                   enlace real.
+                   El boton real de reserva esta en la seccion #agenda. -->
+              <div class="pn_cta_wrap text-center">
+                <ul class="pn_cta_datos unordered_list justify-content-center">
+                  <li><i class="fa-light fa-user-check"></i><span>Proceso personalizado e integral</span></li>
+                  <li><i class="fa-light fa-circle-check"></i><span>Sin costo inicial</span></li>
+                  <li><i class="fa-light fa-lock"></i><span>100% confidencial</span></li>
+                </ul>
+                <div class="btn_wrap pb-0">
+                  <!-- Agenda en linea: Medilink (HealthAtom). Abre en pestana
+                       nueva para no perder el sitio durante la reserva, igual
+                       que el resto de los enlaces externos. -->
+                  <a class="btn btn-primary" href="https://ff.healthatom.io/6oTS9W" target="_blank" rel="noopener">
+                    <span class="btn_text" data-text="Agendar mi primera sesión">
+                      Agendar mi primera sesión
+                    </span>
+                    <span class="btn_icon">
+                      <i class="fa-solid fa-arrow-up-right"></i>
+                    </span>
+                  </a>
+                </div>
+                <p class="pn_cta_nota mb-0">
+                  ¿Prefieres escribir antes? <a href="https://wa.me/573223689894" target="_blank" rel="noopener">Háblanos por WhatsApp</a>
+                </p>
+              </div>
+              <div class="decoration_item shape_leaf_1">
+                <img decoding="async" loading="lazy" src="assets/images/shapes/shape_leaf_right_top.svg" alt="">
+              </div>
+              <div class="decoration_item shape_leaf_2">
+                <img decoding="async" loading="lazy" src="assets/images/shapes/shape_leaf_left_bottom.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Primera sesion / Agenda Section - End
+        ================================================== -->
+      </main>
+      <!-- Main Body - End
+      ================================================== -->
+
+      <!-- Site Footer - Start
+      ================================================== -->
+      <footer class="site_footer bg_primary">
+        <div class="container">
+          <div class="site_footer_content">
+            <div class="row pn_foot_row">
+
+              <div class="col-lg-5 col-md-6">
+                <div class="site_logo mb-3">
+                  <a class="site_link" href="index.html">
+                    <img width="400" height="400" decoding="async" loading="lazy" src="assets/images/site_logo/logo_psiconutre_blanco.png" alt="PsicoNutre">
+                  </a>
+                </div>
+                <h4 class="pn_foot_titulo pn_foot_slogan">Nutre tu mente, transforma tu vida</h4>
+                <p class="pn_foot_desc">
+                  Psicología y nutrición integradas en un mismo proceso.
+                  Atención online y, en las consultas con David, también presencial en Bogotá.
+                </p>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <h4 class="pn_foot_titulo">Contacto</h4>
+                <ul class="pn_foot_lista unordered_list_block">
+                  <li>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <a href="https://wa.me/573223689894" target="_blank" rel="noopener">+57 322 368 9894</a>
+                  </li>
+                  <li>
+                    <i class="fa-light fa-envelope"></i>
+                    <a href="mailto:psiconutre@hotmail.com">psiconutre@hotmail.com</a>
+                  </li>
+                  <li>
+                    <i class="fa-light fa-clock"></i>
+                    <span>Lunes a domingo<br>09:00 – 20:00</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-lg-4 col-md-12">
+                <h4 class="pn_foot_titulo">Tu primera sesión</h4>
+                <p class="pn_foot_desc">
+                  Dura una hora, se realiza online, no tiene costo inicial y es 100% confidencial.
+                </p>
+                <a class="pn_foot_btn" href="#agenda">
+                  Agendar ahora
+                  <i class="fa-solid fa-arrow-up-right"></i>
+                </a>
+              </div>
+
+            </div>
+
+            <!-- Las redes van en su propia franja centrada, no dentro de una
+                 columna: dentro de una columna se centraban respecto de ella
+                 y quedaban corridas de la pagina. -->
+            <div class="pn_foot_social">
+              <ul class="social_links unordered_list justify-content-center">
+                <li><a href="https://www.facebook.com/share/1DFCax5L9F/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/psico__nutre/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://wa.me/573223689894" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="copyright_widget text-center">
+            <p class="copyright_text m-0">
+              PsicoNutre © 2026 · Todos los derechos reservados
+              <span class="pn_foot_sep">·</span>
+              <a href="politica-privacidad.html">Política de Privacidad</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+      <!-- Site Footer - End
+      ================================================== -->
+
+    </div>
+    <!-- Body Wrap - End -->
+
+    <!-- Fraimwork - Jquery Include -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-dropdown-ml-hack.min.js"></script>
+
+    <!-- animation - jquery include -->
+    <script src="assets/js/cursor.min.js"></script>
+
+    <!-- Carousel - Jquery Include -->
+    <script src="assets/js/slick.min.js"></script>
+
+    <!-- Video & Image Popup - Jquery Include -->
+    <script src="assets/js/magnific-popup.min.js"></script>
+
+    <!-- Counter - Jquery Include -->
+    <script src="assets/js/appear.min.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+
+    <!-- Custom - Jquery Include -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- PsicoNutre - aparicion al hacer scroll. Sin dependencias, va al final. -->
+    <script src="assets/js/psiconutre.js"></script>
+
+  </body>
+</html>

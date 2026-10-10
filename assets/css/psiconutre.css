@@ -1,0 +1,2949 @@
+/* ==================================================
+ * PsicoNutre — capa propia sobre la plantilla
+ * --------------------------------------------------
+ * Este archivo se carga DESPUES de style.css.
+ * Todo lo que sea propio del cliente va acá, no en
+ * style.css, para poder actualizar o revertir sin
+ * tocar el motor visual de la plantilla.
+ * ================================================== */
+
+
+/* --------------------------------------------------
+ * 1. Paleta de degradados
+ *
+ * Opciones elegidas por Joik sobre las sugerencias de
+ * David (comentario del 2026-08-31 en el doc):
+ *
+ *   Opcion B (azul):  #FFFFFF -> #BCEEFF -> #0CB8F2
+ *   Opcion D (verde): #FFFFFF -> #DCEDC8 -> #AED581
+ *
+ * El tono saturado (#0CB8F2 / #AED581) NO se usa como
+ * franja plana: entra como mancha difuminada de baja
+ * opacidad. Es lo que David pidio como "color pastel
+ * difuminado", y evita que quede un borde duro.
+ * -------------------------------------------------- */
+
+:root {
+  --pn-blue-pastel: #BCEEFF;
+  --pn-blue-strong: #0CB8F2;
+  --pn-blue-mist:   #EAF8FF;
+
+  --pn-green-pastel: #DCEDC8;
+  --pn-green-strong: #AED581;
+  --pn-green-mist:   #F4F9EC;
+}
+
+
+/* --------------------------------------------------
+ * 2. Fondos degradados
+ *
+ * Tres capas por fondo, de arriba hacia abajo:
+ *   a) mancha difuminada del tono saturado
+ *   b) mancha difuminada del tono pastel, en la
+ *      esquina opuesta, para que no quede simetrico
+ *   c) degradado lineal blanco -> pastel
+ * -------------------------------------------------- */
+
+/* El color CRECE HACIA EL CENTRO y vuelve a blanco en
+ * los dos extremos. Es a proposito: asi cualquier
+ * seccion empalma con la de arriba y la de abajo sin
+ * dejar una franja de corte, sin importar el orden.
+ * Si en algun momento se reordenan las secciones, los
+ * degradados siguen funcionando solos. */
+
+/* El pastel entra como MESETA ANCHA, no como pico: entre el
+ * 38% y el 68% el color esta a intensidad plena. Antes era un
+ * pico angosto y el resultado se leia desaturado, como si el
+ * color estuviera "lavado" en vez de ser un degradado.
+ *
+ * Se mantiene el blanco en los dos extremos a proposito: asi
+ * cualquier seccion empalma con la de arriba y la de abajo sin
+ * dejar franja de corte, sin importar el orden. */
+
+/* Opcion B — azul */
+.pn_grad_blue {
+  background:
+    radial-gradient(60% 55% at 86% 30%,
+      rgba(12, 184, 242, 0.30) 0%,
+      rgba(12, 184, 242, 0) 68%),
+    radial-gradient(58% 52% at 6% 74%,
+      rgba(188, 238, 255, 1) 0%,
+      rgba(188, 238, 255, 0) 70%),
+    linear-gradient(180deg,
+      #FFFFFF 0%,
+      var(--pn-blue-mist) 16%,
+      var(--pn-blue-pastel) 38%,
+      var(--pn-blue-pastel) 68%,
+      var(--pn-blue-mist) 88%,
+      #FFFFFF 100%);
+}
+
+/* Opcion B — variante para el hero.
+   Llega al pastel igual que las demas, pero entra mas tarde:
+   arriba lleva el titular y el brief pide "evitar la sensacion
+   de encierro visual". */
+.pn_grad_blue_soft {
+  background:
+    radial-gradient(55% 50% at 92% 18%,
+      rgba(12, 184, 242, 0.20) 0%,
+      rgba(12, 184, 242, 0) 68%),
+    radial-gradient(62% 58% at 0% 86%,
+      rgba(188, 238, 255, 0.9) 0%,
+      rgba(188, 238, 255, 0) 70%),
+    linear-gradient(180deg,
+      #FFFFFF 0%,
+      #FFFFFF 22%,
+      var(--pn-blue-mist) 46%,
+      var(--pn-blue-pastel) 74%,
+      var(--pn-blue-pastel) 92%,
+      #FFFFFF 100%);
+}
+
+/* Opcion D — verde */
+.pn_grad_green {
+  background:
+    radial-gradient(60% 55% at 10% 28%,
+      rgba(174, 213, 129, 0.32) 0%,
+      rgba(174, 213, 129, 0) 68%),
+    radial-gradient(58% 52% at 92% 76%,
+      rgba(220, 237, 200, 1) 0%,
+      rgba(220, 237, 200, 0) 70%),
+    linear-gradient(180deg,
+      #FFFFFF 0%,
+      var(--pn-green-mist) 16%,
+      var(--pn-green-pastel) 38%,
+      var(--pn-green-pastel) 68%,
+      var(--pn-green-mist) 88%,
+      #FFFFFF 100%);
+}
+
+
+/* --------------------------------------------------
+ * 4. Tarjetas sobre fondo degradado
+ *
+ * .service_item y .team_item vienen con fondo blanco
+ * solido. Sobre un fondo degradado el blanco puro las
+ * despega demasiado; un blanco translucido las integra
+ * y deja pasar algo del color de atras.
+ * -------------------------------------------------- */
+
+.pn_grad_blue .service_item,
+.pn_grad_green .service_item {
+  background-color: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+}
+
+.pn_grad_blue .service_item:hover,
+.pn_grad_green .service_item:hover {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* --------------------------------------------------
+ * 5. Formulario de agenda
+ *
+ * Reemplaza el .bg_primary_light plano de la plantilla.
+ * El brief pide para esta seccion "un bloque de cierre
+ * muy calido en azul claro".
+ * -------------------------------------------------- */
+
+.consultation_form.pn_grad_blue {
+  background:
+    radial-gradient(52% 60% at 88% 12%,
+      rgba(12, 184, 242, 0.22) 0%,
+      rgba(12, 184, 242, 0) 68%),
+    radial-gradient(50% 58% at 10% 90%,
+      rgba(188, 238, 255, 0.85) 0%,
+      rgba(188, 238, 255, 0) 70%),
+    linear-gradient(135deg,
+      #FFFFFF 0%,
+      var(--pn-blue-mist) 50%,
+      var(--pn-blue-pastel) 100%);
+}
+
+
+/* --------------------------------------------------
+ * 6. Badges de pendiente
+ *
+ * Marcadores temporales de material que falta.
+ * BORRAR ESTE BLOQUE cuando lleguen las fotos reales.
+ * -------------------------------------------------- */
+
+.pn_pendiente {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  background: #FFE08A;
+  color: #5A4300;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+
+/* --------------------------------------------------
+ * 7. Boton flotante de WhatsApp
+ * -------------------------------------------------- */
+
+.pn_whatsapp_float {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 99;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 28px;
+  -webkit-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  -webkit-transition: var(--bs-transition);
+  transition: var(--bs-transition);
+}
+
+.pn_whatsapp_float:hover {
+  color: #fff;
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+/* Los dos botones flotantes quedan espejados: mismo tamano y misma
+   distancia al borde, uno a cada lado. */
+.backtotop {
+  right: 24px;
+  bottom: 24px;
+}
+
+.backtotop .scroll {
+  width: 56px;
+  height: 56px;
+}
+
+@media screen and (max-width: 575px) {
+  .backtotop {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .backtotop .scroll {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* En mobile el back-to-top vive abajo a la derecha,
+   asi que el de WhatsApp se achica pero se queda a la
+   izquierda para no encimarse. */
+@media screen and (max-width: 575px) {
+  .pn_whatsapp_float {
+    left: 16px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
+
+/* El telefono del header conserva la animacion de texto de los botones,
+   pero ahora funciona como una pastilla de WhatsApp completa. */
+.btn_hotline {
+  padding: 8px 18px 8px 8px;
+  color: #FFFFFF;
+  background-color: var(--bs-primary);
+  border: 1px solid var(--bs-primary);
+  border-radius: 100px;
+  overflow: hidden;
+  text-decoration: none;
+  -webkit-transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.btn_hotline .btn_icon {
+  margin-right: 8px;
+  background-color: transparent;
+}
+
+.btn_hotline .btn_text {
+  position: relative;
+  display: inline-block;
+  padding: 4px 0 6px;
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.btn_hotline .btn_text:before {
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  content: attr(data-text);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.btn_hotline:hover {
+  color: var(--bs-primary);
+  background-color: #FFFFFF;
+  border-color: var(--bs-primary);
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+}
+
+.btn_hotline:hover .btn_text {
+  -webkit-transform: translateY(-76%);
+          transform: translateY(-76%);
+}
+
+/* Mayusculas y espaciado se declaran al final para ganar a los ajustes
+   de ancho de la plantilla y mantener todos los items en una fila. */
+.main_menu_list > li > a {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .main_menu_list > li > a {
+    font-size: 11px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main_menu_list > li > a {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .main_menu_list {
+    flex-wrap: nowrap;
+  }
+}
+
+.pn_leaf {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 991px) {
+  .pn_leaf {
+    opacity: 0.55;
+  }
+}
+
+/* El zoom queda dentro del marco; los pseudo-elementos decorativos del
+   hero y Dolores no se recortan porque el clip se aplica solo a la foto. */
+.image_widget > img,
+.hero_image_wrap img {
+  clip-path: inset(0 round var(--bs-border-radius-xxl));
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.image_widget:hover > img,
+.hero_image_wrap:hover img {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+}
+
+.images_group_widget ul > li {
+  overflow: hidden;
+}
+
+.images_group_widget ul > li img {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.images_group_widget ul > li:hover img {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+}
+
+.team_item .team_memder_image img {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.team_item:hover .team_memder_image img {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+}
+
+.service_item,
+.team_item {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                      -webkit-box-shadow 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                      background-color 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+              background-color 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.service_item:hover {
+  -webkit-transform: translateY(-12px) scale(1.03);
+          transform: translateY(-12px) scale(1.03);
+}
+
+.service_item .item_icon img {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* El footer ya no tiene navegacion: logo a la izquierda y contacto centrado. */
+.pn_footer_contact {
+  text-align: center;
+}
+
+.pn_footer_contact .social_links {
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.pn_footer_hours {
+  margin: 0;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.site_footer,
+.site_footer a {
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 991px) {
+  .pn_footer_contact {
+    margin-top: 28px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 8. Logo
+ *
+ * El logo de la marca es cuadrado (500x500). El de la
+ * plantilla era un SVG apaisado de 213x38 y el CSS no
+ * define ningun tamaño para .site_logo, asi que sin
+ * esto la imagen se renderiza a tamaño natural.
+ * -------------------------------------------------- */
+
+.site_header .site_logo img {
+  height: 68px;
+  width: auto;
+}
+
+.site_footer .site_logo img {
+  height: 72px;
+  width: auto;
+}
+
+@media screen and (max-width: 575px) {
+  .site_header .site_logo img {
+    height: 44px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 9. Alturas parejas
+ *
+ * Las tarjetas tienen contenido de largo distinto
+ * (bios, descripciones), y sin esto quedan escalonadas.
+ * -------------------------------------------------- */
+
+.service_item,
+.team_item {
+  height: 100%;
+}
+
+
+/* --------------------------------------------------
+ * 10. Strip de confianza del hero
+ *
+ * .hero_section_counter .counter_value fuerza 42px
+ * porque era para los numeros del odometer. Ahora
+ * lleva iconos y a ese tamaño quedan enormes.
+ * -------------------------------------------------- */
+
+.hero_section_counter .counter_value {
+  font-size: 24px;
+  color: var(--bs-primary);
+}
+
+
+/* --------------------------------------------------
+ * 11. Boton secundario
+ *
+ * La plantilla solo define .btn-outline-secondary, que
+ * pinta el texto con --bs-secondary. Con el verde de
+ * la marca (#AED581) sobre blanco eso da 1.66:1 y es
+ * ilegible.
+ *
+ * David eligio #AED581 como color DE BOTON, no de
+ * texto, asi que va de fondo solido con texto oscuro:
+ * 8.02:1, y ademas es lo que el pidio.
+ * -------------------------------------------------- */
+
+.btn-secondary {
+  --bs-btn-bg: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-color: #293039;
+  --bs-btn-hover-bg: #9CC96D;
+  --bs-btn-hover-border-color: #9CC96D;
+  --bs-btn-hover-color: #293039;
+  --bs-btn-active-bg: #9CC96D;
+  --bs-btn-active-border-color: #9CC96D;
+  --bs-btn-active-color: #293039;
+}
+
+/* Por si queda algun outline secundario suelto:
+   texto verde oscuro (4.82:1) en vez del pastel. */
+.btn-outline-secondary {
+  --bs-btn-color: #567D26;
+  --bs-btn-hover-color: #293039;
+}
+
+
+/* --------------------------------------------------
+ * 12. Fotos del equipo
+ *
+ * Las fotos llegan con proporciones distintas y las
+ * tarjetas quedan disparejas. Se fuerza 4:5 para todas,
+ * que es la proporcion de la foto de David.
+ * -------------------------------------------------- */
+
+.team_item .team_memder_image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.team_item .team_memder_image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+
+/* --------------------------------------------------
+ * 13. Collage de "Como trabajamos"
+ *
+ * Las imagenes de la plantilla eran PNG rectos. Las
+ * fotos reales llevan un radio suave para que hagan
+ * juego con el resto (.image_widget usa esquinas
+ * redondeadas grandes).
+ * -------------------------------------------------- */
+
+.images_group_widget ul > li img {
+  border-radius: 16px;
+}
+
+
+/* --------------------------------------------------
+ * 14. Tipografia de titulares
+ *
+ * Pareja elegida por Joik (2026-08-31):
+ *   Plus Jakarta Sans -> titulares. Geometrica-humanista,
+ *     ritmo parejo y contraste bajo: se lee como calma y
+ *     estabilidad. Altura de x alta, que es la condicion
+ *     para que conviva con una serif en la misma linea.
+ *   Fraunces italica  -> palabras destacadas. Soft serif
+ *     con ejes SOFT y WONK; la modulacion de trazo y las
+ *     terminaciones blandas se leen como organico y vivo.
+ *
+ * OJO: --bs-font-heading no aplica solo a h1-h6. La
+ * plantilla tambien se la pone a <a> y <button>, asi que
+ * enlaces y botones cambian tambien. Es intencional: los
+ * botones quedan haciendo juego con los titulares.
+ *
+ * El cuerpo sigue en Open Sans, que carga style.css.
+ * -------------------------------------------------- */
+
+:root {
+  --bs-font-heading: "Plus Jakarta Sans", "Open Sans", sans-serif;
+}
+
+/* Palabras destacadas dentro de los titulares.
+   El peso va en 600 y no en el 800 que heredan los h1-h6:
+   una serif italica pesa mas a simple vista que una sans,
+   asi que a igual peso se veria mas gorda que el resto. */
+mark {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.06em;
+  line-height: 1;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 45, "WONK" 1;
+}
+
+
+/* --------------------------------------------------
+ * 15. Tipografia base
+ *
+ * Se probo Lato y se descarto. Motivos:
+ *   - Su textura clasica y algo condensada no cierra con
+ *     el logo, que es geometrico y redondeado.
+ *   - Altura de x menor: al mismo tamano se lee mas
+ *     chica y los parrafos pierden nitidez.
+ *   - Sumaba una tercera familia sin aportar contraste
+ *     real frente a Plus Jakarta Sans.
+ *
+ * El cuerpo pasa a Plus Jakarta Sans, la misma de los
+ * titulares. Quedan DOS familias en todo el sitio:
+ * Plus Jakarta Sans (texto y titulos) y Fraunces
+ * (destacados). Es la misma arquitectura que usa la
+ * pagina de referencia: una sans para todo y una
+ * segunda familia solo para el enfasis.
+ *
+ * Open Sans se saco del @import de style.css (linea 65).
+ * -------------------------------------------------- */
+
+:root {
+  --bs-body-font-family: "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif;
+  --bs-font-body: "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+
+/* --------------------------------------------------
+ * 16. Rotulos en mayusculas
+ *
+ * Se probo dar jerarquia agrandando la primera frase
+ * del titular (.pn_lead) y se descarto: al medir la
+ * pagina de referencia se vio que NO hace eso. Sus dos
+ * lineas de H1 miden igual (~56px, contra nuestros
+ * 54px). La jerarquia se la da un rotulo chico en
+ * mayusculas encima del titular.
+ *
+ * Es mejor solucion: el salto de tamano dentro de un
+ * titular obliga a marcar a mano donde corta la frase
+ * en cada caso, y el rotulo ademas suma informacion.
+ *
+ * Medidas tomadas de la referencia: ~14px, mayusculas,
+ * espaciado ~0.12em, en el color de acento.
+ * -------------------------------------------------- */
+
+.pn_rotulo {
+  display: block;
+  font-family: var(--bs-font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bs-primary);
+  margin-bottom: 14px;
+}
+
+@media screen and (max-width: 575px) {
+  .pn_rotulo {
+    font-size: 12px;
+    letter-spacing: 0.10em;
+    margin-bottom: 10px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 17. Aparicion al hacer scroll
+ *
+ * Los elementos entran subiendo apenas y con fundido.
+ * La clase .pn-anim la pone un script en el <head>,
+ * ANTES del primer pintado, para que no haya parpadeo.
+ *
+ * Regla de seguridad: si el JS no llega a arrancar, la
+ * clase nunca se agrega (o se saca por timeout) y todo
+ * queda visible. El contenido no puede depender del JS.
+ * -------------------------------------------------- */
+
+html.pn-anim .hero_content_wrap,
+html.pn-anim .hero_image_wrap,
+html.pn-anim .section_heading,
+html.pn-anim .about_content,
+html.pn-anim .image_widget,
+html.pn-anim .images_group_widget,
+html.pn-anim .work_process_item,
+html.pn-anim .service_item,
+html.pn-anim .team_item,
+html.pn-anim .consultation_form,
+html.pn-anim .btn_wrap {
+  opacity: 0;
+  -webkit-transform: translateY(26px);
+          transform: translateY(26px);
+  -webkit-transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                      -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html.pn-anim .pn-in {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+/* Accesibilidad: quien pidio menos movimiento no recibe
+   ninguno. No es un detalle menor en un sitio de salud
+   mental: el movimiento puede molestar de verdad. */
+@media (prefers-reduced-motion: reduce) {
+  html.pn-anim .hero_content_wrap,
+  html.pn-anim .hero_image_wrap,
+  html.pn-anim .section_heading,
+  html.pn-anim .about_content,
+  html.pn-anim .image_widget,
+  html.pn-anim .images_group_widget,
+  html.pn-anim .work_process_item,
+  html.pn-anim .service_item,
+  html.pn-anim .team_item,
+  html.pn-anim .consultation_form,
+  html.pn-anim .btn_wrap {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+    -webkit-transition: none;
+            transition: none;
+  }
+}
+
+/* --------------------------------------------------
+ * 40. Ajustes de interaccion solicitados
+ * -------------------------------------------------- */
+
+.backtotop {
+  right: 24px;
+  bottom: 24px;
+}
+
+.backtotop .scroll {
+  width: 56px;
+  height: 56px;
+}
+
+.btn_hotline {
+  padding: 8px 18px 8px 8px;
+  color: #FFFFFF;
+  background-color: var(--bs-primary);
+  border: 1px solid var(--bs-primary);
+  border-radius: 100px;
+  overflow: hidden;
+  text-decoration: none;
+  -webkit-transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.btn_hotline .btn_icon {
+  margin-right: 8px;
+  color: #FFFFFF;
+  background-color: transparent;
+}
+
+.btn_hotline .btn_text {
+  position: relative;
+  display: inline-block;
+  padding: 4px 0 6px;
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.btn_hotline .btn_text:before {
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  content: attr(data-text);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.btn_hotline:hover {
+  color: var(--bs-primary);
+  background-color: #FFFFFF;
+  border-color: var(--bs-primary);
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+}
+
+.btn_hotline:hover .btn_icon {
+  color: var(--bs-primary);
+}
+
+.btn_hotline:hover .btn_text {
+  -webkit-transform: translateY(-76%);
+          transform: translateY(-76%);
+}
+
+.main_menu_list > li > a {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media screen and (min-width: 992px) {
+  .main_menu_list {
+    flex-wrap: nowrap;
+  }
+
+  .main_menu_list > li > a {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+}
+
+.pn_leaf {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 991px) {
+  .pn_leaf {
+    opacity: 0.55;
+  }
+}
+
+.service_item,
+.team_item {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                      -webkit-box-shadow 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                      background-color 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+              background-color 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.service_item:hover {
+  -webkit-transform: translateY(-12px) scale(1.03);
+          transform: translateY(-12px) scale(1.03);
+}
+
+.service_item .item_icon img,
+.image_widget > img,
+.hero_image_wrap img,
+.images_group_widget ul > li img,
+.team_item .team_memder_image img {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.service_item:hover .item_icon img {
+  -webkit-transform: scale(1.12) rotate(-4deg);
+          transform: scale(1.12) rotate(-4deg);
+}
+
+.image_widget > img,
+.hero_image_wrap img {
+  clip-path: inset(0 round var(--bs-border-radius-xxl));
+}
+
+.image_widget:hover > img,
+.hero_image_wrap:hover img,
+.images_group_widget ul > li:hover img,
+.team_item:hover .team_memder_image img {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+}
+
+.images_group_widget ul > li {
+  overflow: hidden;
+}
+
+.site_footer,
+.site_footer a {
+  color: #FFFFFF;
+}
+
+.pn_footer_contact {
+  text-align: center;
+}
+
+.pn_footer_contact .social_links {
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.pn_footer_hours {
+  margin: 0;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 575px) {
+  .backtotop {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .backtotop .scroll {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 18. Retoque del strip de confianza en mobile
+ *
+ * .counter_description trae max-width: 160px, pensado
+ * para los textos cortos del contador original. Plus
+ * Jakarta Sans es algo mas ancha que la fuente anterior
+ * y "100% confidencial" partia en dos lineas.
+ * -------------------------------------------------- */
+
+@media screen and (max-width: 575px) {
+  .hero_section_counter .counter_description {
+    max-width: none;
+    font-size: 16px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 19. Verde del logo
+ *
+ * --bs-secondary pasa del pastel #AED581 al verde real
+ * del logo, #74C94F (muestreado del archivo). Con un
+ * solo cambio se actualizan los tres lugares que pidio
+ * Joik: boton "Conoce como trabajamos", back-to-top y
+ * botones de redes.
+ *
+ * El degradado verde de las secciones NO se toca: usa
+ * el rgba(174,213,129) escrito a mano, que es el pastel
+ * que eligio David y que quedo aprobado.
+ * -------------------------------------------------- */
+
+:root {
+  --bs-secondary: #74C94F;
+  --bs-secondary-rgb: 116, 201, 79;
+}
+
+.btn-secondary {
+  --bs-btn-hover-bg: #63B341;
+  --bs-btn-hover-border-color: #63B341;
+  --bs-btn-active-bg: #63B341;
+  --bs-btn-active-border-color: #63B341;
+}
+
+
+/* --------------------------------------------------
+ * 20. Recuadros detras de la imagen del hero
+ *
+ * La plantilla los trae en verde claro
+ * (--bs-secondary-bg-subtle) y menta (#C1E3DE). Con la
+ * paleta celeste quedaban fuera de tono. Pasan a dos
+ * intensidades del mismo celeste, que es lo que pidio
+ * Joik: una variacion entre ambos en vez de dos verdes.
+ * -------------------------------------------------- */
+
+.hero_image_wrap:before {
+  background-color: var(--pn-blue-mist);
+}
+
+.hero_image_wrap:after {
+  background-color: #CBEBFA;
+}
+
+
+/* --------------------------------------------------
+ * 21. Ancho de contenido
+ *
+ * .container venia en 1440px con 15px de padding: en
+ * pantallas grandes el texto arrancaba casi pegado al
+ * borde y quedaba un hueco enorme entre el texto y la
+ * imagen. Se acota el ancho y se agranda el aire
+ * lateral.
+ * -------------------------------------------------- */
+
+.container {
+  max-width: 1280px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 22. Secciones a pantalla completa
+ *
+ * min-height, NO height: las secciones con poco
+ * contenido se estiran hasta llenar la pantalla y se
+ * adaptan al monitor; las que tienen mucho (Servicios,
+ * con 9 tarjetas) crecen mas alla en vez de recortarse.
+ *
+ * 100svh ademas de 100vh: en mobile, 100vh incluye la
+ * barra de direcciones y provoca un salto al hacer
+ * scroll. svh usa el alto real disponible.
+ * -------------------------------------------------- */
+
+.pn_full {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.pn_full > .container {
+  width: 100%;
+}
+
+/* En pantallas bajas y en mobile no tiene sentido forzar
+   el alto: el contenido ya lo supera y solo agrega aire
+   muerto arriba y abajo. */
+@media screen and (max-height: 700px), screen and (max-width: 767px) {
+  .pn_full {
+    min-height: 0;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 23. Grilla del equipo mas contenida
+ *
+ * Cuatro tarjetas a lo ancho de 1280px quedaban
+ * demasiado extendidas y costaba leerlas de un vistazo.
+ * -------------------------------------------------- */
+
+/* Se probo con max-width: 80% y se descarto: al haber
+   bajado el contenedor de 1440 a 1280 (bloque 21), ese 80%
+   dejaba cada tarjeta en ~256px y los nombres y las bios
+   se partian mal. El contenedor mas angosto ya logra lo
+   que se buscaba: en una pantalla de 1920 la grilla ocupa
+   1280px, o sea el 67% del ancho.
+
+   La clase queda definida por si hace falta en otro lado. */
+.pn_narrow {
+  max-width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 991px) {
+  .pn_narrow {
+    max-width: 100%;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 24. Aire entre la ultima seccion y el footer
+ *
+ * El degradado celeste de la seccion Agenda necesitaba
+ * espacio para terminar antes del azul solido del footer.
+ * -------------------------------------------------- */
+
+.consultation_section {
+  padding-bottom: 120px;
+}
+
+@media screen and (max-width: 767px) {
+  .consultation_section {
+    padding-bottom: 70px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 25. Hojas de fondo
+ *
+ * La plantilla trae cinco hojas en SVG y solo usaba
+ * tres. Se suman las dos que quedaban sin uso
+ * (shape_leaf_left, shape_leaf_right) en las secciones
+ * que no tenian ninguna.
+ *
+ * Refuerzan el lado natural de la marca, que es la mitad
+ * nutricion del negocio. Van muy tenues y por detras de
+ * todo: acompanan, no compiten.
+ * -------------------------------------------------- */
+
+.pn_leaf {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.pn_leaf img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* El contenido tiene que quedar por encima de la hoja. */
+.pn_full > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.pn_leaf_dolores {
+  top: 6%;
+  left: -60px;
+  width: 260px;
+}
+
+.pn_leaf_servicios {
+  right: -50px;
+  bottom: 8%;
+  width: 300px;
+}
+
+.pn_leaf_equipo {
+  top: 10%;
+  right: -40px;
+  width: 240px;
+}
+
+@media screen and (max-width: 991px) {
+  .pn_leaf {
+    opacity: 0.3;
+    width: 160px;
+  }
+}
+
+/* Las hojas asoman fuera del borde a proposito. Sin esto
+   generarian scroll horizontal. No se aplica al hero, que
+   tiene sus propias formas que si deben desbordar. */
+.pn_clip {
+  overflow: hidden;
+}
+
+
+/* --------------------------------------------------
+ * 26. Navegacion por anclas
+ *
+ * scroll-padding-top compensa el header fijo: sin esto
+ * el titulo de la seccion queda tapado por el menu al
+ * llegar desde un enlace.
+ * -------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+
+/* --------------------------------------------------
+ * 27. Reparto del hero
+ *
+ * La columna de texto pasa a 7/12 y la de imagen a 5/12.
+ * Con 6/6 los dos botones no entraban en una linea y se
+ * apilaban, lo que empujaba el contenido fuera de la
+ * pantalla; y sobraba un hueco grande entre el texto y
+ * la imagen, que es lo que marco Joik.
+ *
+ * .hero_image_wrap traia 60px de padding, pensado para
+ * una columna mas ancha. En 5/12 dejaba la foto chica.
+ * -------------------------------------------------- */
+
+@media screen and (min-width: 992px) {
+  .hero_image_wrap {
+    padding: 36px;
+  }
+}
+
+/* Los dos botones del hero, en linea y con algo menos de
+   aire lateral para que entren juntos con holgura. */
+.hero_content_wrap .btns_group .btn {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+/* --------------------------------------------------
+ * 28. Header
+ *
+ * - Logo mas grande, para que el eslogan del lockup se
+ *   llegue a leer.
+ * - Al fijarse ocupa el 80% del ancho y redondea las
+ *   esquinas de abajo: queda como una solapa. Se conserva
+ *   la sombra de la plantilla.
+ * - Seis items de menu obligan a achicar la tipografia.
+ * -------------------------------------------------- */
+
+.site_header .site_logo img { height: 84px; }
+.site_footer .site_logo img { height: 78px; }
+.site_header.sticky .site_logo img { height: 58px; }
+
+/* El header vive SIEMPRE al 80% y centrado. Antes el ancho,
+   el left y el transform cambiaban los tres al activarse
+   .sticky, y con el "transition: all" de la plantilla eso
+   producia un salto lateral de ida y vuelta.
+   Ahora al fijarse solo cambian fondo, sombra, radio y
+   padding: cero movimiento horizontal. Arriba del todo el
+   header es transparente, asi que el 80% no se nota. */
+@media screen and (min-width: 992px) {
+  .site_header {
+    left: 50%;
+    right: auto;
+    width: 80%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .site_header.sticky {
+    border-radius: 0 0 22px 22px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .site_header .site_logo img { height: 52px; }
+  .site_header.sticky .site_logo img { height: 44px; }
+}
+
+/* Seis items entran justos: sin esto el menu se parte en
+   dos lineas. */
+@media screen and (min-width: 992px) {
+  .main_menu_list > li > a {
+    font-size: 13px;
+    padding: 8px 9px;
+    letter-spacing: -0.01em;
+  }
+  .main_menu_list > li:not(:last-child) {
+    margin-right: 2px;
+  }
+  .main_menu_list > li > a:after {
+    left: 9px;
+    right: 9px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 29. Hover del menu
+ *
+ * La plantilla pinta una pastilla de fondo. Se cambia por
+ * un subrayado que crece desde el centro: mas sobrio y no
+ * ensancha el item al activarse.
+ *
+ * PROVISORIO: Joik va a traer una referencia del efecto
+ * que prefiere. Esto es una propuesta mientras tanto.
+ * -------------------------------------------------- */
+
+.main_menu_list > li > a,
+.main_menu_list > li:hover > a,
+.main_menu_list > li.active > a {
+  background-color: transparent;
+}
+
+.main_menu_list > li > a:after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--bs-primary);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.main_menu_list > li:hover > a:after,
+.main_menu_list > li.active > a:after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.main_menu_list > li.active > a { color: var(--bs-primary); }
+
+
+/* --------------------------------------------------
+ * 30. Strip de confianza del hero
+ *
+ * Estaban sueltos, como tres bloques de texto flotando
+ * fuera del diseno. Pasan a pastillas: icono y texto en
+ * linea, fondo translucido y borde suave. Es el mismo
+ * recurso que usa la pagina de referencia.
+ * -------------------------------------------------- */
+
+.hero_section_counter { margin: 0 -6px; }
+.hero_section_counter > li { padding: 6px; }
+.hero_section_counter hr { display: none; }
+
+.hero_section_counter .counter_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 11px 20px 11px 16px;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(12, 184, 242, 0.20);
+  -webkit-transition: var(--bs-transition);
+  transition: var(--bs-transition);
+}
+
+.hero_section_counter .counter_item:hover {
+  background-color: #FFFFFF;
+  border-color: var(--bs-primary);
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+  -webkit-box-shadow: 0 10px 24px rgba(12, 184, 242, 0.18);
+          box-shadow: 0 10px 24px rgba(12, 184, 242, 0.18);
+}
+
+.hero_section_counter .counter_value {
+  font-size: 19px;
+  line-height: 1;
+  margin: 0;
+}
+
+.hero_section_counter .counter_value i {
+  display: block;
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.hero_section_counter .counter_item:hover .counter_value i {
+  -webkit-transform: scale(1.18) rotate(-6deg);
+          transform: scale(1.18) rotate(-6deg);
+}
+
+.hero_section_counter .counter_description {
+  max-width: none;
+  font-size: 15px;
+  line-height: 1.3;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 575px) {
+  .hero_section_counter .counter_description {
+    white-space: normal;
+    font-size: 14px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 31. Recuadro detras de la imagen de Dolores
+ *
+ * La plantilla lo pinta de menta (#C1E3DE) mediante una
+ * regla [class*=shape] sobre .bg_primary_light. Pasa al
+ * mismo celeste desaturado de los recuadros del hero.
+ * -------------------------------------------------- */
+
+.image_widget .image_shape.bg_primary_light {
+  background-color: #CBEBFA;
+}
+
+
+/* --------------------------------------------------
+ * 32. Titular centrado de Proceso
+ *
+ * El titular subio y se centro sobre las tarjetas y la
+ * galeria, para que las dos columnas queden enfrentadas.
+ * -------------------------------------------------- */
+
+#proceso .section_heading {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+#proceso .section_heading_description {
+  max-width: 660px;
+}
+
+
+/* --------------------------------------------------
+ * 33. Tarjetas de servicio mas compactas
+ *
+ * Traian 60px de padding, pensados para tres tarjetas.
+ * Con nueve la seccion medía 2199px. Compactarlas la
+ * acorta bastante SIN esconder ningun servicio, que es lo
+ * que importa: el brief pide que con un solo vistazo la
+ * persona ubique lo que busca.
+ * -------------------------------------------------- */
+
+.service_item { padding: 34px 30px 28px; }
+.service_item .item_icon { margin-bottom: 16px; }
+.service_item .item_icon img { max-width: 52px; }
+
+.service_item .item_title {
+  font-size: 20px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.service_item p {
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+
+/* --------------------------------------------------
+ * 34. Hover mas expresivo
+ *
+ * El de la plantilla mueve 6px y casi no se percibe. Se
+ * sube el recorrido, se suma sombra de color y se alarga
+ * la transicion para que se sienta el movimiento en vez
+ * de un salto.
+ * -------------------------------------------------- */
+
+.service_item,
+.team_item,
+.work_process_item {
+  -webkit-transition: -webkit-transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+                      -webkit-box-shadow 0.45s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.45s ease,
+              background-color 0.45s ease;
+}
+
+.service_item:hover {
+  -webkit-transform: translateY(-12px) scale(1.03);
+          transform: translateY(-12px) scale(1.03);
+  -webkit-box-shadow: 0 22px 45px rgba(12, 184, 242, 0.22);
+          box-shadow: 0 22px 45px rgba(12, 184, 242, 0.22);
+}
+
+.service_item .item_icon img {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.service_item:hover .item_icon img {
+  -webkit-transform: scale(1.12) rotate(-4deg);
+          transform: scale(1.12) rotate(-4deg);
+}
+
+.work_process_item:hover {
+  -webkit-transform: translateY(-8px);
+          transform: translateY(-8px);
+}
+
+
+/* --------------------------------------------------
+ * 35. Tarjetas del equipo: sombra mas marcada
+ * -------------------------------------------------- */
+
+.team_item {
+  -webkit-box-shadow: 0 8px 28px rgba(12, 184, 242, 0.16);
+          box-shadow: 0 8px 28px rgba(12, 184, 242, 0.16);
+}
+
+.team_item:hover {
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  -webkit-box-shadow: 0 24px 50px rgba(12, 184, 242, 0.26);
+          box-shadow: 0 24px 50px rgba(12, 184, 242, 0.26);
+}
+
+
+/* --------------------------------------------------
+ * 36. Bloque de cierre (Agenda)
+ *
+ * Reemplaza al formulario de la plantilla: el
+ * agendamiento va por Calendly.
+ * -------------------------------------------------- */
+
+.pn_cta_datos {
+  gap: 10px;
+  margin: 26px 0 6px;
+}
+
+.pn_cta_datos > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  font-size: 15px;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(12, 184, 242, 0.20);
+}
+
+.pn_cta_datos > li i {
+  color: var(--bs-primary);
+  font-size: 17px;
+}
+
+.pn_cta_nota {
+  margin-top: 18px;
+  font-size: 15px;
+}
+
+.pn_cta_nota a {
+  font-weight: 700;
+  color: var(--bs-primary);
+  text-decoration: underline;
+}
+
+
+/* --------------------------------------------------
+ * 37. Ver mas en parrafos largos
+ *
+ * Recorta a 3 lineas y despliega al hacer clic. El boton
+ * lo agrega el JS, y SOLO si el texto de verdad supera
+ * las 3 lineas: asi no aparece un boton inutil en los
+ * parrafos cortos.
+ *
+ * Sin JS no se recorta nada, porque la clase .pn_clamped
+ * la pone el script. El texto completo siempre queda
+ * accesible.
+ * -------------------------------------------------- */
+
+.pn_clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pn_clamped.pn_open {
+  display: block;
+  -webkit-line-clamp: unset;
+}
+
+.pn_vermas {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--bs-font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--bs-primary);
+  border-bottom: 2px solid transparent;
+  -webkit-transition: var(--bs-transition);
+  transition: var(--bs-transition);
+}
+
+.pn_vermas:hover {
+  border-bottom-color: var(--bs-primary);
+}
+
+/* Entre 992 y 1199 la columna del nav se queda corta para
+   los seis items. Un escalon mas de compresion alcanza:
+   por debajo de 992 ya entra el menu hamburguesa. */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .main_menu_list > li > a {
+    font-size: 12px;
+    padding: 7px 6px;
+  }
+  .main_menu_list > li:not(:last-child) {
+    margin-right: 0;
+  }
+  .main_menu_list > li > a:after {
+    left: 6px;
+    right: 6px;
+  }
+}
+
+/* El boton se inserta despues del <p>, y con el margen
+   inferior del parrafo quedaba flotando entre el texto y
+   lo que sigue. Se pega al parrafo y se separa de abajo. */
+p.pn_clamped {
+  margin-bottom: 2px;
+}
+
+.pn_vermas {
+  margin-top: 2px;
+  margin-bottom: 26px;
+}
+
+#proceso .pn_vermas {
+  margin-bottom: 0;
+}
+
+
+
+
+/* ==================================================
+ * 40. Linea de tiempo HORIZONTAL de "Como trabajamos"
+ * --------------------------------------------------
+ * Segunda version. La primera era vertical; Joik la
+ * prefirio horizontal, minimalista, con la galeria a la
+ * derecha y una barra de progreso navegable.
+ *
+ * Reemplaza por completo al bloque 38: aquellas reglas
+ * (.pn_tl_steps, .pn_tl_linea, .pn_tl_dot) ya no se usan.
+ * ================================================== */
+
+/* --- Viewport con bordes difuminados ---------------
+ * La mascara es lo que da el foco: las tarjetas de los
+ * costados se desvanecen contra el fondo en vez de
+ * cortarse con un borde duro.
+ * -------------------------------------------------- */
+
+.pn_tl_viewport {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 0 18px;
+  -webkit-mask-image: linear-gradient(90deg,
+    transparent 0%, #000 14%, #000 86%, transparent 100%);
+          mask-image: linear-gradient(90deg,
+    transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+
+.pn_tl_track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 18px;
+  will-change: transform;
+  -webkit-transition: -webkit-transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.pn_tl_step {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 300px;
+          flex: 0 0 300px;
+  max-width: 300px;
+}
+
+/* --- Tarjeta -------------------------------------- */
+
+.pn_tl_card {
+  height: 100%;
+  padding: 24px 24px 26px;
+  border-radius: 18px;
+  background-color: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(12, 184, 242, 0.14);
+  -webkit-transition: all 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Las que no estan al centro se apagan y desenfocan un
+   poco. Es lo que pidio Joik para darle foco a la activa. */
+.pn_tl_step:not(.is-active) .pn_tl_card {
+  opacity: 0.45;
+  -webkit-filter: blur(1.4px);
+          filter: blur(1.4px);
+  -webkit-transform: scale(0.94);
+          transform: scale(0.94);
+}
+
+.pn_tl_step.is-active .pn_tl_card {
+  opacity: 1;
+  background-color: #FFFFFF;
+  border-color: rgba(12, 184, 242, 0.38);
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-box-shadow: 0 18px 40px rgba(12, 184, 242, 0.18);
+          box-shadow: 0 18px 40px rgba(12, 184, 242, 0.18);
+}
+
+.pn_tl_head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.pn_tl_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  font-size: 20px;
+  color: var(--bs-primary);
+  background-color: rgba(12, 184, 242, 0.10);
+  -webkit-transition: all 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* El paso activo usa el verde del logo: los dos colores de
+   la marca se reparten entre el icono y la barra. */
+.pn_tl_step.is-active .pn_tl_icon {
+  color: #FFFFFF;
+  background-color: var(--bs-secondary);
+}
+
+.pn_tl_step.is-active .pn_tl_icon i {
+  -webkit-animation: pn_flotar 3.4s ease-in-out infinite;
+          animation: pn_flotar 3.4s ease-in-out infinite;
+}
+
+@-webkit-keyframes pn_flotar {
+  0%, 100% { -webkit-transform: translateY(0); }
+  50%      { -webkit-transform: translateY(-4px); }
+}
+
+@keyframes pn_flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+.pn_tl_num {
+  font-family: var(--bs-font-heading);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(12, 184, 242, 0.22);
+  -webkit-transition: color 0.75s ease;
+  transition: color 0.75s ease;
+}
+
+.pn_tl_step.is-active .pn_tl_num {
+  color: rgba(12, 184, 242, 0.55);
+}
+
+.pn_tl_title {
+  font-size: 19px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.pn_tl_text {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Barra de progreso navegable ------------------ */
+
+.pn_tl_bar {
+  padding: 0 6px;
+}
+
+.pn_tl_rail {
+  position: relative;
+  height: 26px;
+  cursor: -webkit-grab;
+  cursor: grab;
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
+}
+
+.pn_tl_rail:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+/* La linea de fondo */
+.pn_tl_rail:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: rgba(12, 184, 242, 0.16);
+}
+
+.pn_tl_fill {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--bs-primary) 0%, var(--bs-secondary) 100%);
+  -webkit-transition: width 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: width 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Los cuatro puntos son los pasos: se puede hacer clic */
+.pn_tl_tick {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 2px solid rgba(12, 184, 242, 0.35);
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.pn_tl_tick:hover {
+  border-color: var(--bs-primary);
+  -webkit-transform: translate(-50%, -50%) scale(1.25);
+          transform: translate(-50%, -50%) scale(1.25);
+}
+
+.pn_tl_tick.is-active {
+  border-color: var(--bs-primary);
+  background-color: var(--bs-primary);
+  -webkit-transform: translate(-50%, -50%) scale(1.45);
+          transform: translate(-50%, -50%) scale(1.45);
+  -webkit-box-shadow: 0 0 0 6px rgba(12, 184, 242, 0.14);
+          box-shadow: 0 0 0 6px rgba(12, 184, 242, 0.14);
+}
+
+.pn_tl_tick.is-done {
+  border-color: var(--bs-primary);
+  background-color: rgba(12, 184, 242, 0.35);
+}
+
+/* Los pasos futuros pulsan suavemente para sugerir que hay mas contenido
+   hacia la derecha, sin competir con el paso activo. */
+.pn_tl_tick:not(.is-active):not(.is-done) {
+  -webkit-animation: pn_tl_pulse 1.8s ease-in-out infinite;
+          animation: pn_tl_pulse 1.8s ease-in-out infinite;
+}
+
+@-webkit-keyframes pn_tl_pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(12, 184, 242, 0); }
+  50%      { box-shadow: 0 0 0 6px rgba(12, 184, 242, 0.20); }
+}
+
+@keyframes pn_tl_pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(12, 184, 242, 0); }
+  50%      { box-shadow: 0 0 0 6px rgba(12, 184, 242, 0.20); }
+}
+
+.pn_tl_rail:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+/* --- Responsive ----------------------------------- */
+
+@media screen and (max-width: 575px) {
+  .pn_tl_step {
+    -ms-flex: 0 0 250px;
+        flex: 0 0 250px;
+    max-width: 250px;
+  }
+  .pn_tl_card {
+    padding: 20px 20px 22px;
+  }
+  .pn_tl_viewport {
+    -webkit-mask-image: linear-gradient(90deg,
+      transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(90deg,
+      transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pn_tl_track,
+  .pn_tl_card,
+  .pn_tl_fill {
+    -webkit-transition: none;
+            transition: none;
+  }
+  .pn_tl_step.is-active .pn_tl_icon i {
+    -webkit-animation: none;
+            animation: none;
+  }
+  .pn_tl_step:not(.is-active) .pn_tl_card {
+    -webkit-filter: none;
+            filter: none;
+  }
+  .pn_tl_tick:not(.is-active):not(.is-done) {
+    -webkit-animation: none;
+            animation: none;
+  }
+}
+
+
+/* ==================================================
+ * 41. Footer
+ * --------------------------------------------------
+ * Antes: logo, redes y horario en una sola fila. Se veia
+ * vacio, y las redes estaban dentro de una col-lg-9, asi
+ * que se centraban respecto de esa columna y quedaban
+ * corridas de la pagina.
+ *
+ * Ahora: tres columnas de contenido, y las redes en su
+ * propia franja, centradas de verdad.
+ *
+ * Todo el texto va en blanco sobre el azul de la marca.
+ * ================================================== */
+
+.site_footer,
+.site_footer p,
+.site_footer span,
+.site_footer li,
+.site_footer a {
+  color: #FFFFFF;
+}
+
+.pn_foot_row {
+  padding-bottom: 34px;
+}
+
+.pn_foot_slogan {
+  font-family: var(--bs-font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.pn_foot_desc {
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+  max-width: 340px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pn_foot_titulo {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+}
+
+.pn_foot_lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pn_foot_lista > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 11px;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.pn_foot_lista > li:last-child {
+  margin-bottom: 0;
+}
+
+.pn_foot_lista i {
+  margin-top: 3px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pn_foot_lista a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  -webkit-transition: border-color 0.5s ease;
+  transition: border-color 0.5s ease;
+}
+
+.pn_foot_lista a:hover {
+  border-bottom-color: #FFFFFF;
+}
+
+/* Boton de cierre: invertido respecto del resto del sitio,
+   porque acá el fondo ya es el celeste de la marca. */
+.site_footer .pn_foot_btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 9px;
+  padding: 13px 26px;
+  border-radius: 100px;
+  font-family: var(--bs-font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--bs-primary);
+  background-color: #FFFFFF;
+  -webkit-transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.site_footer .pn_foot_btn:hover {
+  color: var(--bs-primary);
+  background-color: #FFFFFF;
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+  -webkit-box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+}
+
+/* Franja de redes, centrada respecto de la pagina */
+.pn_foot_social {
+  padding: 26px 0 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.site_footer .social_links a {
+  color: var(--bs-primary);
+  background-color: #FFFFFF;
+}
+
+.site_footer .social_links a:before {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.site_footer .social_links a:hover {
+  color: var(--bs-primary);
+}
+
+.pn_foot_sep {
+  opacity: 0.45;
+  margin: 0 6px;
+}
+
+.site_footer .copyright_text a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.site_footer .copyright_text a:hover {
+  border-bottom-color: #FFFFFF;
+}
+
+@media screen and (max-width: 991px) {
+  .pn_foot_row > div {
+    margin-bottom: 30px;
+  }
+  .pn_foot_desc {
+    max-width: none;
+  }
+}
+
+/* Contador de paso. Ademas de orientar, le da presencia a
+   la columna izquierda, que con solo la banda de tarjetas
+   quedaba vacia frente a la galeria. */
+.pn_tl_meta {
+  font-family: var(--bs-font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(12, 184, 242, 0.75);
+  margin-bottom: 14px;
+}
+
+.pn_tl_actual {
+  color: var(--bs-primary);
+}
+
+/* Mas aire entre las dos columnas principales sin alterar el apilado
+   responsive de la plantilla. */
+@media screen and (min-width: 992px) {
+  .about_section > .container > .row > [class*="col-lg-6"],
+  #proceso > .container > .row > .pn_gal_col,
+  #proceso > .container > .row > .pn_tl_col {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+}
+
+/* El degradado pertenece a toda Agenda, no a una caja interna. */
+.consultation_section.pn_grad_blue {
+  overflow: hidden;
+}
+
+.consultation_section.pn_grad_blue .consultation_form {
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* Los tres nombres del footer son titulos del mismo nivel visual. */
+.site_footer .pn_foot_titulo,
+.site_footer .pn_foot_slogan {
+  min-height: 42px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+/* Los botones conservan su elevacion, pero el texto queda fijo y la
+   flecha comunica el movimiento de forma mas clara. */
+.btn .btn_text,
+.btn_hotline .btn_text {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.btn .btn_text:before,
+.btn_hotline .btn_text:before {
+  display: none;
+}
+
+.btn:hover .btn_text,
+.btn_hotline:hover .btn_text {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.btn .btn_icon,
+.btn-link .btn_icon {
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.btn:hover .btn_icon,
+.btn-link:hover .btn_icon {
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+}
+
+/* Ayuda visible debajo del riel: indica que la linea se puede explorar
+   hacia la derecha con clic o arrastre. */
+.pn_tl_hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 0;
+  color: rgba(41, 48, 57, 0.72);
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.pn_tl_hint_arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-primary);
+  animation: pn_tl_hint_arrow 1.6s ease-in-out infinite;
+}
+
+@keyframes pn_tl_hint_arrow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pn_tl_hint_arrow {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .pn_tl_hint {
+    align-items: flex-start;
+    font-size: 12px;
+  }
+}
+
+
+/* ==================================================
+ * 42. Ubicacion — cierre previo al footer
+ * --------------------------------------------------
+ * La consulta presencial se presenta en una tarjeta
+ * amplia y liviana. El celeste conecta con la marca y
+ * el mapa conserva el aire visual del resto del sitio.
+ * ================================================== */
+
+.pn_location_section {
+  padding: 20px 0 120px;
+  background-color: #FFFFFF;
+}
+
+.pn_location_card {
+  overflow: hidden;
+  border: 1px solid rgba(12, 184, 242, 0.2);
+  border-radius: 32px;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 24px 70px rgba(41, 48, 57, 0.1);
+          box-shadow: 0 24px 70px rgba(41, 48, 57, 0.1);
+}
+
+.pn_location_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  margin: 0;
+  padding: clamp(42px, 5vw, 72px);
+  background:
+    radial-gradient(circle at 0% 100%, rgba(188, 238, 255, 0.9), transparent 62%),
+    linear-gradient(145deg, #FFFFFF 0%, var(--pn-blue-mist) 100%);
+}
+
+.pn_location_content .section_heading_text {
+  margin: 14px 0 18px;
+  font-size: clamp(30px, 3.2vw, 48px);
+  line-height: 1.12;
+}
+
+.pn_location_text {
+  max-width: 430px;
+  margin: 0 0 22px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.pn_location_address {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 12px;
+  max-width: 440px;
+  margin: 0 0 28px;
+  padding: 16px 18px;
+  border: 1px solid rgba(12, 184, 242, 0.22);
+  border-radius: 16px;
+  color: var(--bs-dark);
+  background-color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.pn_location_address i {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--bs-primary);
+  font-size: 19px;
+}
+
+.pn_location_map {
+  height: 100%;
+  min-height: 440px;
+  background-color: var(--pn-blue-mist);
+}
+
+.pn_location_map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  border: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .pn_location_section {
+    padding: 10px 0 80px;
+  }
+
+  .pn_location_content {
+    padding: 44px 36px;
+  }
+
+  .pn_location_map,
+  .pn_location_map iframe {
+    min-height: 360px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .pn_location_card {
+    border-radius: 24px;
+  }
+
+  .pn_location_content {
+    padding: 36px 24px;
+  }
+
+  .pn_location_content .section_heading_text {
+    font-size: 30px;
+  }
+
+  .pn_location_text {
+    font-size: 16px;
+  }
+
+  .pn_location_map,
+  .pn_location_map iframe {
+    min-height: 320px;
+  }
+
+  .hero_section_counter > li:first-child {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .hero_section_counter > li:first-child .counter_item {
+    min-width: 280px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 43. Fotos del consultorio en la franja de ubicacion
+ *
+ * Van a sangre en la base de la tarjeta, debajo del
+ * texto y el mapa. Son fotos reales del lugar, asi que
+ * acompanan a la direccion: quien duda de ir en persona
+ * ve el espacio y despues ubica donde queda.
+ *
+ * Las dos tienen proporciones distintas (una apaisada y
+ * otra vertical), por eso se normaliza con una altura fija
+ * y object-fit: cover en vez de dejar que cada una
+ * imponga la suya.
+ * -------------------------------------------------- */
+
+.pn_location_gallery {
+  overflow: hidden;
+}
+
+.pn_location_gallery img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Zoom interno: crece la imagen, no el marco. */
+.pn_location_gallery > div {
+  overflow: hidden;
+}
+
+.pn_location_gallery > div:hover img {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+}
+
+@media screen and (max-width: 767px) {
+  .pn_location_gallery img {
+    height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pn_location_gallery > div:hover img {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 41. Pagina legal (politica-privacidad.html)
+ *
+ * Documento de lectura larga, no una seccion de landing.
+ * Dos decisiones que lo separan del resto del sitio:
+ *
+ * 1. Columna angosta (68ch). El resto de la pagina usa
+ *    el ancho del container, que para parrafos seguidos
+ *    da renglones de mas de 120 caracteres: se pierde
+ *    el salto de linea al leer.
+ *
+ * 2. Nada aparece al hacer scroll. El texto legal no
+ *    puede depender de JS para verse.
+ * -------------------------------------------------- */
+
+.pn_legal_hero {
+  /* El header es fixed (position: fixed, 40px de padding
+     arriba y abajo): sin este espacio el titulo le queda
+     debajo. */
+  padding: 200px 0 60px;
+  background-image:
+    linear-gradient(180deg,
+      #FFFFFF 0%,
+      var(--pn-blue-mist) 45%,
+      var(--pn-blue-mist) 100%);
+  text-align: center;
+}
+
+.pn_legal_titulo {
+  max-width: 17ch;
+  margin: 10px auto 0;
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.pn_legal_fecha {
+  margin: 18px 0 0;
+  font-size: 15px;
+  color: rgba(41, 48, 57, 0.6);
+}
+
+.pn_legal_body {
+  padding: 70px 0 100px;
+  background-color: #FFFFFF;
+}
+
+.pn_legal_doc {
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
+.pn_legal_intro {
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(41, 48, 57, 0.85);
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(12, 184, 242, 0.18);
+}
+
+.pn_legal_doc h2 {
+  margin: 52px 0 18px;
+  font-size: 27px;
+  line-height: 1.3;
+}
+
+.pn_legal_doc h3 {
+  margin: 34px 0 14px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.pn_legal_doc p {
+  margin: 0 0 18px;
+}
+
+.pn_legal_doc ul {
+  margin: 0 0 22px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.pn_legal_doc ul li {
+  position: relative;
+  margin-bottom: 11px;
+  padding-left: 26px;
+}
+
+/* Vineta propia: la del navegador se desalinea con
+   renglones de varias lineas, que aca son la mayoria. */
+.pn_legal_doc ul li:before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--pn-blue-strong);
+}
+
+.pn_legal_doc a {
+  color: var(--bs-primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(12, 184, 242, 0.4);
+  -webkit-transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
+}
+
+.pn_legal_doc a:hover {
+  border-bottom-color: var(--pn-blue-strong);
+}
+
+/* Frase que conviene que no se pierda entre los parrafos. */
+.pn_legal_destacado {
+  margin: 26px 0 !important;
+  padding: 18px 22px;
+  border-left: 3px solid var(--bs-secondary);
+  border-radius: 0 10px 10px 0;
+  background-color: var(--pn-green-mist);
+  font-weight: 600;
+}
+
+/* --- Tablas ---
+   El wrapper permite desplazarlas de costado en telefono
+   sin que la pagina entera se mueva en horizontal. */
+.pn_legal_tabla_wrap {
+  margin: 0 0 24px;
+  overflow-x: auto;
+  border: 1px solid rgba(12, 184, 242, 0.2);
+  border-radius: 14px;
+}
+
+.pn_legal_tabla {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.pn_legal_tabla th,
+.pn_legal_tabla td {
+  padding: 13px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(12, 184, 242, 0.14);
+}
+
+.pn_legal_tabla tr:last-child th,
+.pn_legal_tabla tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Tabla de dos columnas: la primera es la etiqueta. */
+.pn_legal_tabla tbody th {
+  width: 38%;
+  font-weight: 600;
+  color: var(--bs-heading-color);
+  background-color: var(--pn-blue-mist);
+}
+
+.pn_legal_tabla thead th {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bs-heading-color);
+  background-color: var(--pn-blue-mist);
+}
+
+.pn_legal_tabla_3col {
+  min-width: 520px;
+}
+
+.pn_legal_volver {
+  margin-top: 56px;
+  padding-top: 34px;
+  border-top: 1px solid rgba(12, 184, 242, 0.18);
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .pn_legal_hero {
+    padding: 150px 0 46px;
+  }
+  .pn_legal_titulo {
+    font-size: 36px;
+    max-width: none;
+  }
+  .pn_legal_body {
+    padding: 50px 0 70px;
+  }
+}
+
+@media (max-width: 575px) {
+  .pn_legal_titulo {
+    font-size: 30px;
+  }
+  .pn_legal_intro {
+    font-size: 17px;
+  }
+  .pn_legal_doc h2 {
+    font-size: 23px;
+  }
+}
+
+/* En telefono el correo llegaba pegado al borde de la celda.
+   Se achica la columna de etiquetas y se deja que las cadenas
+   largas corten, en vez de empujar la tabla a desplazarse. */
+@media (max-width: 575px) {
+  .pn_legal_tabla th,
+  .pn_legal_tabla td {
+    padding: 11px 13px;
+  }
+  .pn_legal_tabla tbody th {
+    width: 34%;
+  }
+  .pn_legal_tabla td {
+    overflow-wrap: anywhere;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 42. Seccion de Nutricion
+ *
+ * Pedido del cliente (2026-09-28): nutricion deja de ser
+ * una tarjeta entre los servicios de psicologia y pasa a
+ * tener seccion propia, en VERDE, para distinguirla del
+ * CELESTE de psicologia.
+ *
+ * El truco esta en redefinir --bs-primary solo dentro de
+ * #nutricion. Todos los acentos de la plantilla (el rotulo,
+ * el <mark> del titular, el subrayado de "Agendar" y el
+ * circulito de la flecha) ya leen esa variable, asi que la
+ * seccion entera cambia de color sin duplicar una sola regla.
+ *
+ * El verde NO es el #74C94F de marca: sobre blanco da 2.06:1
+ * y hace ilegible el rotulo, que es texto chico. #437020 es
+ * el mismo verde oscurecido hasta 5.87:1, que si pasa AA.
+ * -------------------------------------------------- */
+
+#nutricion {
+  --bs-primary: #437020;
+  --bs-primary-rgb: 67, 112, 32;
+
+  /* No alcanza con --bs-primary. style.css define
+     --bs-link-color: var(--bs-primary) sobre :root, y una custom
+     property se resuelve donde se DECLARA, no donde se usa: para
+     cuando el enlace la hereda ya vale celeste. Por eso el <mark>
+     y el circulito de la flecha salian verdes (leen --bs-primary
+     directo) pero el texto "Agendar" seguia celeste. */
+  --bs-link-color: #437020;
+  --bs-link-color-rgb: 67, 112, 32;
+  --bs-link-hover-color: #2F5216;
+}
+
+.pn_leaf_nutricion {
+  top: 8%;
+  left: -55px;
+  width: 270px;
+}
+
+/* Circulo verde para nutricion. El celeste de psicologia esta
+   en el bloque 45. */
+#nutricion .item_icon {
+  background-color: rgba(174, 213, 129, 0.35);
+}
+
+#nutricion .item_icon i {
+  font-size: 36px;
+  line-height: 1;
+  color: #4E8526;
+  /* inline-block explicito: un elemento inline ignora transform,
+     y sin esto el hover de abajo no haria nada. */
+  display: inline-block;
+}
+
+/* El hover de la tarjeta mueve .item_icon img, y estos iconos son
+   <i> y no <img>: se quedaban quietos mientras los de psicologia
+   giraban. Mismo gesto y misma curva, para que no se note de cual
+   seccion viene cada tarjeta. */
+.service_item .item_icon i {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.service_item:hover .item_icon i {
+  -webkit-transform: scale(1.12) rotate(-4deg);
+          transform: scale(1.12) rotate(-4deg);
+}
+
+/* El titulo del tercer servicio es largo de verdad
+   ("Intervencion clinica en trastornos de la conducta
+   alimentaria"). Sin esto las tres tarjetas quedan de
+   alturas distintas y la fila se ve desprolija. */
+#nutricion .service_item {
+  height: 100%;
+}
+
+#nutricion .row > div {
+  margin-bottom: 24px;
+}
+
+
+/* --------------------------------------------------
+ * 43. Footer en movil: la lista de contacto
+ *
+ * La plantilla centra todo el footer por debajo de 992px
+ * con text-align: center. Pero .pn_foot_lista > li es un
+ * contenedor flex, y flex ignora text-align para acomodar
+ * a sus hijos: el icono y el texto se quedaban pegados a
+ * la izquierda mientras el resto del footer iba centrado.
+ *
+ * Se centra el par icono+texto como unidad. El bloque de
+ * horario lleva un <br>, asi que ademas se centra su texto.
+ * -------------------------------------------------- */
+
+@media screen and (max-width: 991px) {
+  .pn_foot_lista > li {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .pn_foot_lista > li i {
+    margin-top: 4px;
+  }
+  .pn_foot_desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 44. Coherencia de los encabezados en movil
+ *
+ * Cuatro secciones centran su encabezado (.text-center) y
+ * tres no: Dolores, Equipo y Ubicacion. En escritorio esta
+ * bien, porque las tres son de dos columnas y la izquierda
+ * acompana a la imagen o al boton de al lado.
+ *
+ * Pero por debajo de 992px las columnas se apilan, el motivo
+ * desaparece y quedan tres encabezados alineados a la
+ * izquierda entre cuatro centrados. Aca se igualan, solo en
+ * movil. Escritorio queda intacto.
+ *
+ * El <address> de Ubicacion y la lista del footer son flex:
+ * no alcanza con text-align, hay que centrar la caja.
+ * -------------------------------------------------- */
+
+@media screen and (max-width: 991px) {
+  #dolores .section_heading,
+  #equipo .section_heading,
+  #equipo .btn_wrap,
+  #ubicacion .pn_location_content {
+    text-align: center;
+  }
+
+  #dolores .section_heading_description,
+  #equipo .section_heading_description,
+  #ubicacion .pn_location_text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Tiene max-width: 440px, asi que ademas de centrar el
+     contenido hay que centrar la caja. */
+  #ubicacion .pn_location_address {
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 45. Iconos de los servicios de psicologia
+ *
+ * David pidio (2026-09-28) cambiar tres iconos: una planilla
+ * para Evaluacion psicodiagnostica, algo de familia para
+ * Terapia familiar y algo de ninos para Infanto-juvenil,
+ * "para que no se vean tan repetidos".
+ *
+ * No se pudo hacer solo con esos tres: la plantilla trae SEIS
+ * SVG para nueve servicios, y no hay mas ni en el paquete
+ * original. Cambiar tres por iconos de FontAwesome y dejar
+ * seis ilustrados habria mezclado dos estilos en la misma
+ * grilla.
+ *
+ * Asi que pasan los NUEVE a FontAwesome, con el mismo
+ * tratamiento que ya tenia nutricion. Ademas de resolver la
+ * repeticion, deja las dos secciones de servicios habladas en
+ * el mismo idioma visual: circulo pastel + icono de linea,
+ * celeste para psicologia y verde para nutricion.
+ *
+ * El celeste del icono NO es el #0CB8F2 de marca: sobre el
+ * circulo palido da 2.02:1 y un grafico necesita 3:1. Se usa
+ * #0B7CA3, que da 4.17:1.
+ * -------------------------------------------------- */
+
+#servicios .item_icon {
+  background-color: rgba(188, 238, 255, 0.55);
+}
+
+#servicios .item_icon i {
+  font-size: 36px;
+  line-height: 1;
+  color: #0B7CA3;
+  /* inline-block explicito: un elemento inline ignora transform
+     y el hover del bloque 42 no haria nada. */
+  display: inline-block;
+}
+
+
+/* --------------------------------------------------
+ * 46. El menu, despues de los signos de interrogacion
+ *
+ * David pidio (2026-09-28) que "Por que consultar" y "Como
+ * trabajamos" lleven signos de interrogacion, como ya los
+ * llevan los titulares de esas secciones. Son cuatro
+ * caracteres mas, y el menu ya estaba al limite: el bloque de
+ * mas arriba dice "seis items entran justos".
+ *
+ * Medido en el DOM: la lista pasaba a ocupar 612px dentro de
+ * una columna de 538, y "PRIMERA SESION" se metia debajo del
+ * boton de WhatsApp. A 1200px el solape llegaba a 71px.
+ *
+ * Comprimir mas la letra no alcanzaba y empeoraba la lectura.
+ * El problema real es estructural: el header reparte el ancho
+ * en columnas fijas (2 / 7 / 3) y al menu le toca un 58% que
+ * no le da. Aca se cambia el criterio: el logo y los botones
+ * ocupan lo que necesitan, y el menu se queda con TODO el
+ * resto. Deja de depender de que las etiquetas midan lo que
+ * median el dia que se eligio la grilla.
+ *
+ * Solo por encima de 992px: por debajo entra el hamburguesa.
+ * -------------------------------------------------- */
+
+@media screen and (min-width: 992px) {
+  .site_header .row {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+
+  /* Logo y botonera: lo que midan. */
+  .site_header .row > [class*="col-"] {
+    width: auto;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+  }
+
+  /* El menu: todo lo demas, y NUNCA menos que su contenido.
+     Con min-width:0 la columna se encogia por debajo de la
+     lista y el <ul> desbordaba por encima del boton en vez de
+     empujarlo. Sin shrink y con el min-width automatico, la
+     columna reserva lo que el menu realmente mide. */
+  .site_header .row > .col-lg-7 {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+  }
+
+  /* El nav y su contenedor tampoco deben quedarse cortos:
+     son .navbar de Bootstrap y traen ancho propio. */
+  .site_header .main_menu,
+  .site_header .main_menu_inner {
+    width: 100%;
+  }
+}
+
+/* Y el ancho del header. Vive al 80% centrado (bloque 33), que
+   en una pantalla de 1100px son ~855px utiles. Logo, menu y
+   boton suman ~955: con los signos de interrogacion el 80% se
+   quedo corto y el boton se salia del contenedor.
+   Entre 992 y 1399 se ensancha; de 1400 para arriba el 80% ya
+   sobra y se mantiene como estaba. */
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+  .site_header {
+    width: 94%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main_menu_list > li > a {
+    font-size: 12px;
+    padding: 8px 7px;
+    letter-spacing: -0.02em;
+  }
+  .main_menu_list > li:not(:last-child) {
+    margin-right: 0;
+  }
+  .main_menu_list > li > a:after {
+    left: 7px;
+    right: 7px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 47. El equipo pasa a cuatro
+ *
+ * Con la entrada de Angelo (2026-09-30) las tres tarjetas en
+ * col-lg-4 quedaban 3+1, con una suelta abajo. Pasan a
+ * col-lg-3: los cuatro en una fila.
+ *
+ * Se probaron las dos opciones en captura. A 2x2 las tarjetas
+ * se estiraban a ~570px y la foto quedaba enorme; en una fila
+ * miden ~261px, que es angosto pero se lee bien: el nombre
+ * entra en dos lineas y la bio sigue recortada a tres con
+ * "Ver mas".
+ * -------------------------------------------------- */
+
+@media screen and (min-width: 992px) {
+  /* Los roles de dos lineas ("Psicologia educativa y manejo de
+     adicciones") descuadraban la fila. */
+  #equipo .team_item {
+    height: 100%;
+  }
+  #equipo .row > div {
+    margin-bottom: 24px;
+  }
+}
+
+
+/* --------------------------------------------------
+ * 48. El nutricionista dentro del equipo
+ *
+ * David pidio (2026-09-30) que la distincion verde/celeste
+ * que ya existe entre las dos secciones de servicios se note
+ * tambien en el equipo: le edito la foto con uniforme verde
+ * oscuro y sugirio "aplicarlo tambien a su nombre".
+ *
+ * Mismo recurso que en #nutricion: se redefine --bs-primary
+ * solo para esa tarjeta. El rol lo lee directo, asi que pasa
+ * a verde sin tocar nada mas.
+ *
+ * Con cinco profesionales la fila queda 4+1. En vez de
+ * disimularlo, el verde hace que la quinta se lea como lo que
+ * es: la parte de nutricion del equipo, no una tarjeta huerfana.
+ * -------------------------------------------------- */
+
+.team_item.pn_team_nutri {
+  --bs-primary: #437020;
+  --bs-primary-rgb: 67, 112, 32;
+  --bs-link-color: #437020;
+}
+
+.team_item.pn_team_nutri .team_memder_designation {
+  color: #437020;
+}
+
+/* El "Ver mas" de esa tarjeta tambien. */
+.team_item.pn_team_nutri .pn_vermas {
+  color: #437020;
+}

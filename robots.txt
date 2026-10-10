@@ -1,0 +1,21 @@
+# PREVIEW - no indexar.
+#
+# El sitio esta terminado pero todavia no vive en su dominio definitivo.
+# Mientras siga en la URL de Vercel no queremos que Google la indexe: si
+# lo hace, despues compite contra el dominio real por los mismos textos.
+#
+# AL MIGRAR AL DOMINIO REAL:
+#   1. Reemplazar este archivo por el de produccion (mas abajo).
+#   2. Descomentar el <link rel="canonical"> de las dos paginas.
+#   3. Pasar og:image y twitter:image a URL absoluta.
+#   4. Publicar sitemap.xml.
+# El detalle esta en docs/lanzamiento.md.
+
+User-agent: *
+Disallow: /
+
+# --- VERSION DE PRODUCCION (reemplazar todo lo de arriba por esto) ---
+# User-agent: *
+# Allow: /
+#
+# Sitemap: https://DOMINIO/sitemap.xml
