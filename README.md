@@ -16,7 +16,8 @@ navegador.
 | `assets/css/style.css` | Hoja de la plantilla base |
 | `assets/css/psiconutre.css` | **Estilos propios.** Carga después de `style.css` |
 | `assets/js/psiconutre.js` | **JavaScript propio.** Scroll, menú activo, "Ver más", línea de tiempo |
-| `robots.txt` | Hoy bloquea la indexación a propósito |
+| `robots.txt` | Permite la indexación y apunta al sitemap |
+| `sitemap.xml` | Lista de páginas públicas para buscadores |
 
 > Lo propio del proyecto vive en `psiconutre.css` y `psiconutre.js`. El resto de `assets/`
 > es la plantilla base y conviene no tocarlo.
@@ -26,14 +27,12 @@ navegador.
 El sitio se despliega en **Vercel**, conectado a este repositorio: cada push a `main`
 publica. Como el sitio está en la raíz del repo, **no hay que configurar Root Directory**.
 
-⚠️ `robots.txt` contiene `Disallow: /`. Mientras esté así, Google no indexa el sitio. Es a
-propósito, hasta que el dominio definitivo esté conectado.
+Dominio oficial: **https://psiconutresalud.com** (el `www` redirige al dominio sin `www`).
 
-## Antes de publicar en el dominio real
+## SEO
 
-1. Reemplazar `robots.txt` por la versión de producción que está comentada en el archivo.
-2. Descomentar el `<link rel="canonical">` en las dos páginas y completar el dominio.
-3. Pasar `og:image` y `twitter:image` a URL absoluta.
-4. Agregar `"url"` al bloque de datos estructurados de `index.html`.
-5. Crear `sitemap.xml`.
-6. Dar de alta el dominio en Google Search Console.
+- `robots.txt` permite la indexación y declara el sitemap.
+- `canonical`, `og:url`, `og:image` y `twitter:image` usan URL absoluta con el dominio oficial.
+- Los datos estructurados (JSON-LD) de `index.html` incluyen `url`, `logo` e `image` absolutos.
+- Si se agrega una página pública nueva, sumarla a `sitemap.xml` y darle su `canonical`.
+- Pendiente fuera del repo: dar de alta el dominio en Google Search Console y enviar el sitemap.

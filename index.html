@@ -14,34 +14,37 @@
     <title>Psicología y nutrición en Bogotá | PsicoNutre</title>
     <meta name="description" content="Consulta de psicología en Bogotá y online: adultos, niños y adolescentes, con acompañamiento nutricional. Primera sesión sin costo.">
 
-    <!-- AL MIGRAR AL DOMINIO REAL: descomentar el canonical y pasar
-         og:image y twitter:image a URL absoluta. Las redes sociales NO
-         resuelven rutas relativas: hoy la tarjeta compartida sale sin
-         imagen. No se pone la URL de Vercel para no declararla canonica. -->
-    <!-- <link rel="canonical" href="https://DOMINIO/"> -->
+    <!-- Canonical, og:url y las imagenes van con el dominio oficial y en
+         URL absoluta: las redes sociales NO resuelven rutas relativas y,
+         sin la URL completa, la tarjeta compartida sale sin imagen. -->
+    <link rel="canonical" href="https://psiconutresalud.com/">
 
     <meta property="og:site_name" content="PsicoNutre">
+    <meta property="og:url" content="https://psiconutresalud.com/">
     <meta property="og:title" content="Psicología y nutrición en Bogotá | PsicoNutre">
     <meta property="og:description" content="Consulta de psicología en Bogotá y online: adultos, niños y adolescentes, con acompañamiento nutricional. Primera sesión sin costo.">
-    <meta property="og:image" content="assets/images/hero/pn_hero.jpg">
+    <meta property="og:image" content="https://psiconutresalud.com/assets/images/hero/pn_hero.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1121">
+    <meta property="og:image:height" content="1403">
     <meta property="og:image:alt" content="Dos personas conversando durante una sesión de psicología en PsicoNutre">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CO">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Psicología y nutrición en Bogotá | PsicoNutre">
     <meta name="twitter:description" content="Consulta de psicología en Bogotá y online: adultos, niños y adolescentes, con acompañamiento nutricional. Primera sesión sin costo.">
-    <meta name="twitter:image" content="assets/images/hero/pn_hero.jpg">
+    <meta name="twitter:image" content="https://psiconutresalud.com/assets/images/hero/pn_hero.jpg">
     <!-- Datos estructurados. Esto es lo que Google usa para el panel
          lateral y para las busquedas locales del tipo "psicologo cerca
          de mi". No se declara "geo": el mapa embebido resuelve por
          direccion y no tenemos las coordenadas reales; inventarlas
-         mandaria gente a la puerta equivocada.
-         AL MIGRAR: agregar "url" y pasar logo/image a URL absoluta. -->
+         mandaria gente a la puerta equivocada. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "MedicalBusiness",
       "name": "PsicoNutre",
+      "url": "https://psiconutresalud.com/",
       "slogan": "Nutre tu mente, transforma tu vida",
       "description": "Consultorio de psicología con acompañamiento nutricional en Bogotá. Atención a adultos, niños y adolescentes, presencial y online.",
       "telephone": "+573223689894",
@@ -63,28 +66,12 @@
           "name": "Colombia"
         }
       ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "09:00",
-          "closes": "20:00"
-        }
-      ],
       "sameAs": [
         "https://www.instagram.com/psico__nutre/",
         "https://www.facebook.com/share/1DFCax5L9F/?mibextid=wwXIfr"
       ],
-      "logo": "assets/images/site_logo/logo_psiconutre.png",
-      "image": "assets/images/hero/pn_hero.jpg",
+      "logo": "https://psiconutresalud.com/assets/images/site_logo/logo_psiconutre.png",
+      "image": "https://psiconutresalud.com/assets/images/hero/pn_hero.jpg",
       "availableLanguage": {
         "@type": "Language",
         "name": "Español"
@@ -476,8 +463,8 @@
 
               <div class="col-lg-6 pn_tl_col">
                 <!-- Linea de tiempo de los 4 pasos. La redaccion es de Joik y
-                     refleja el flujo real (Calendly primera consulta -> Fresha
-                     pacientes asignados). PENDIENTE DE APROBACION DE DAVID. -->
+                     refleja el flujo real: la primera sesion se agenda por
+                     Medilink (HealthAtom). -->
                 <div class="pn_tl">
 
                   <p class="pn_tl_meta">
@@ -570,10 +557,8 @@
               </p>
             </div>
 
-            <!-- Descripciones redactadas por Joik como propuesta.
-                 PENDIENTE DE APROBACION DE DAVID: son descripciones de servicios
-                 clinicos y las tiene que validar un profesional habilitado.
-                 [PENDIENTE ICONOS] Se reutilizan los iconos de la plantilla. -->
+            <!-- Descripciones redactadas por Joik y aprobadas por David.
+                 Iconos: Font Awesome Pro (fa-light), uno por servicio. -->
             <div class="row justify-content-center">
 
               <div class="col-lg-4 col-md-6 col-sm-6">
@@ -745,9 +730,7 @@
              Va en VERDE y psicologia en CELESTE: es la distincion que pidio
              David. Por eso reusa .pn_grad_green, el mismo fondo que Proceso.
 
-             Las descripciones son propuesta de Joik.
-             PENDIENTE DE APROBACION DE DAVID: son descripciones de servicios
-             clinicos y las tiene que validar un profesional habilitado.
+             Las descripciones son de Joik y estan aprobadas por David.
         ================================================== -->
         <section id="nutricion" class="service_section section_space_lg pn_grad_green pn_full pn_clip">
           <div class="pn_leaf pn_leaf_nutricion"><img decoding="async" loading="lazy" src="assets/images/shapes/shape_leaf_left.svg" alt=""></div>
@@ -1021,10 +1004,7 @@
                 </p>
               </div>
               <!-- El formulario de la plantilla se saco: el agendamiento va por
-                   Calendly. Cuando exista la cuenta de PsicoNutre, este bloque se
-                   reemplaza por el widget embebido o el href del boton apunta al
-                   enlace real.
-                   El boton real de reserva esta en la seccion #agenda. -->
+                   Medilink (HealthAtom), con el boton de abajo. -->
               <div class="pn_cta_wrap text-center">
                 <ul class="pn_cta_datos unordered_list justify-content-center">
                   <li><i class="fa-light fa-user-check"></i><span>Proceso personalizado e integral</span></li>
@@ -1093,10 +1073,6 @@
                   <li>
                     <i class="fa-light fa-envelope"></i>
                     <a href="mailto:psiconutre@hotmail.com">psiconutre@hotmail.com</a>
-                  </li>
-                  <li>
-                    <i class="fa-light fa-clock"></i>
-                    <span>Lunes a domingo<br>09:00 – 20:00</span>
                   </li>
                 </ul>
               </div>

@@ -1471,7 +1471,7 @@ html {
  * 36. Bloque de cierre (Agenda)
  *
  * Reemplaza al formulario de la plantilla: el
- * agendamiento va por Calendly.
+ * agendamiento va por Medilink (HealthAtom).
  * -------------------------------------------------- */
 
 .pn_cta_datos {
@@ -2701,8 +2701,8 @@ p.pn_clamped {
  * a sus hijos: el icono y el texto se quedaban pegados a
  * la izquierda mientras el resto del footer iba centrado.
  *
- * Se centra el par icono+texto como unidad. El bloque de
- * horario lleva un <br>, asi que ademas se centra su texto.
+ * Se centra el par icono+texto como unidad, y ademas su
+ * texto por si un item ocupa mas de una linea.
  * -------------------------------------------------- */
 
 @media screen and (max-width: 991px) {
